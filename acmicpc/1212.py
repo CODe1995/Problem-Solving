@@ -1,5 +1,2 @@
-num = list(input())
-text = ""
-for i in len(num):
-    temp = i
-print(text)
+num = "0o"+input()
+print(bin(eval(num))[2:])
