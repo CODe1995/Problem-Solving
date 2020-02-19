@@ -1,5 +1,5 @@
-data = list()
-data += input().split()
+import sys
+data =[]
 for i in range(5):
-    data[i] = int(data[i])
+    data.append(int(sys.stdin.readline().rstrip()))
 print(sum(data))
