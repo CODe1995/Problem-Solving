@@ -10,7 +10,7 @@
 ### input() 보다 sys.stdin.readline 사용하는게 속도가 훨씬 빠르다!!!!!!!!!!!
 ### 단, readline 하면 개행문자도 함께 저장되니까 문자열만 저장할 때는 rstrip()을 쓰자!..
 
-### 2751 : 수 정렬하기2 REVIEW
+### [PyPy3]2751 : 수 정렬하기2 REVIEW
 알고리즘은 정상 작동했으나 Python 자체 속도의 문제로 반복되는 [시간초과]...
 sys.stdin.readline을 사용해봤으나 readline의 개행문자가 같이 들어가서 오류가 떴고
 .rstrip()으로 겨우 해결했다
