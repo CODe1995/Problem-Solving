@@ -7,3 +7,5 @@
 /acmicpc/Debug
 acmicpc.*
 acmicpc.sln
+.vscode
+.vscode/*
