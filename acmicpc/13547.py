@@ -1,5 +1,6 @@
 from collections import Counter
 
+###기본입력###
 N = int(input())
 A = list(map(int,input().split()))
 M = int(input())
@@ -7,6 +8,8 @@ qry=list()
 for i in range(1,M+1):
     cnt = 0
     qry.append(list(map(int,input().split())))
+##############
+
 plo =0; phi =M
 tmp = A
 cnt=0
