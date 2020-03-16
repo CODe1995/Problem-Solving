@@ -1,25 +1,18 @@
-import sys
-inp = sys.stdin.readline
-K,N = map(int,input().split())
-data = []
-for i in range(K):
-    data.append(int(inp().strip()))
-data = sorted(data,reverse=True)
-right = data[0]
+k,n=map(int,input().split())
+cables = []
+for _ in range(k):
+    cables.append(int(input()))
+cables = sorted(cables,reverse=True)
+# print(cables)
+right = cables[0]
 left = 0
-result = 0
-while left<=right:
-    mid = (left+right)//2    
-    #갯수가 나오는지 체크
-    cnt = 0
-    for i in data:
+while left<=right:    
+    cnt=0
+    mid = (right+left)//2
+    for i in cables:
         cnt += i//mid
-        if(cnt>=N and mid>result):
-            result = mid
-            break
-    if cnt<N:
-        right = mid-1
+    if cnt >= n:#갯수를 줄여야함 = 길이를 늘려야함
+        left = mid + 1
     else:
-        left = mid+1
-print(result)
-        
+        right = mid - 1
+print(right)
