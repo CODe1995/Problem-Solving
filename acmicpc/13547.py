@@ -1,5 +1,6 @@
 from collections import Counter
 import sys
+
 ###기본입력###
 cnt = [0]*1000001
 N = int(input())
@@ -10,28 +11,30 @@ qry=list()
 for i in range(1,M+1):
     qry.append(list(map(int,sys.stdin.readline().split())))
 ##############
-qry = sorted(qry)
+
+def mos(arr):#모스알고리즘 규칙
+    s = arr[0]
+    e = arr[1]
+    ns = arr[0]
+    ne = arr[1]    
+    if s/k < ns/k or (s/k == ns/k and e < ne):
+        return [s,e],[ns,ne]
+    return [ns,ne],[s,e]
+
+# qry = sorted(qry)
 ###정    렬###
 # Q1먼저 처리하는 조건
 # [s1/k] < [s2/k]
 # [s1/k] = [s2/k] and e1 < e2
 dq = []
-for i,[s,e] in enumerate(qry):
-    if i+1 >= len(qry):        break
-    ns = qry[i+1][0]
-    ne = qry[i+1][1]
-    #Q2 먼저 처리하는 조건
-    print(qry)
-    if s/k < ns/k:
-        dq.append([s,e])
-    elif s/k == ns/k and e < ne:
-        dq.append([s,e])
-    else:
-        dq.append([ns,ne])
-        qry[i],qry[i+1]=qry[i+1],qry[i]
-##############
+print(qry)
+print(sorted(qry,key=lambda x: [x[0]/k,-x[1]]))
 
-print('==결과==\n',dq,'\n',qry)
+# for i,qq in enumerate(qry):
+#     if i+1 >= len(qry): break
+#     qry[i],qry[i+1] = mos(qq,qry[i+1])
+# print('==결과==\n','\n',qry)
+##############
 # for key,(left, right) in qry.items():
 #     key = len(Counter(Aarr[left:right+1]))
 #     print(key)
