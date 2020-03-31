@@ -9,6 +9,7 @@
 5463 : 건포도 - 아마 DFS  
 1509 : palindrome
 13545 : 모스알고리즘
+1932
 # CAREFUL
 * Python 런타임에러 : 입력시 .split()으로 나눠 받기
 * input() 보다 sys.stdin.readline 사용하는게 속도가 훨씬 빠르다!!!!!!!!!!!
