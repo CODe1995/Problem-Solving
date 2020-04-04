@@ -6,6 +6,7 @@
 #pragma warning(disable:4996)
 #define MAX 100001
 using namespace std;
+//prefix sum을 접목시켜야함. 
 
 int cnt[MAX*10];
 pair<int, int>* query;
