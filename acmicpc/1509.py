@@ -1,5 +1,9 @@
 # arr = input()
 arr= list('ACAA')
+# 1 0 1 1
+# 0 1 0 0
+# 1 0 1 1
+# 1 0 1 1
 num = len(arr)+1
 dp = [2600]*num
 dp[0]=0
