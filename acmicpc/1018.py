@@ -12,30 +12,21 @@ for i in range(n):
         else:
             boardW[i][j]=1
             boardB[i][j]=0
-        flag = 'W' if flag=='B' else 'B'        
-    flag = 'W' if flag=='B' else 'B'
-for i in range(n):
-    print(boardW[i])
-print()
-for i in range(n):
-    print(boardB[i])
-# for i in range(n):
-#     for j in range(m):
-#         if j+8<=m and i+8<=n:
-#             print(i,j,'==')
-#             # print(boardW[j:j+8][i:i+8])
-#             # print(boardB[j:j+8][i:i+8])
+        if j+1!=m:
+            flag = 'W' if flag=='B' else 'B'  
+    if m%2!=0:
+        flag = 'W' if flag=='B' else 'B'  
 
-#             for w in boardW[i:i+8]:
-#                 print(sum(w[j:j+8]),end=':')
-#                 for inw in w[j:j+8]:
-#                     print(inw,end=' ')
-
-#                 print()
-#             print('B')
+res=99999999
+for i in range(n):
+    for j in range(m):
+        if j+8<=m and i+8<=n:
+            sumW=0
+            sumB=0
+            for w in boardW[i:i+8]:
+                sumW+=sum(w[j:j+8])
             
-#             for w in boardB[i:i+8]:
-#                 print(sum(w[j:j+8]),end=':')
-#                 for inw in w[j:j+8]:
-#                     print(inw,end= ' ')
-#                 print()
+            for b in boardB[i:i+8]:
+                sumB+=sum(b[j:j+8])
+    res=min(sumW,sumB,res)
+print(res)
