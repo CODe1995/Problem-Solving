@@ -28,5 +28,5 @@ for i in range(n):
             
             for b in boardB[i:i+8]:
                 sumB+=sum(b[j:j+8])
-    res=min(sumW,sumB,res)
+        res=min(sumW,sumB,res)
 print(res)
