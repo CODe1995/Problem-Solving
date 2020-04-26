@@ -24,11 +24,3 @@ for i in range(n):
 print(len(ans))
 for i in sorted(ans):
     print(i)
-
-
-
-
-    
-
-
-
