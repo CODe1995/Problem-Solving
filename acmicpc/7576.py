@@ -17,6 +17,7 @@ for i in range(height):
 afarr = arr
 
 def bfs():        
+    life=0
     while nextq:
         tmx,tmy,life=nextq.popleft()
         afarr[tmy][tmx]=1
@@ -32,8 +33,10 @@ def bfs():
         for j in range(width):
             if afarr[i][j]==0:
                 pos = False
-                print(-1)
                 break      
+        if pos==False:
+            print(-1)
+            break
     if pos == True:      
         print(life)
 
