@@ -6,3 +6,4 @@ k = int(input())
 while t:
     t-=1
     arr = list(map(int,input().strip().split()))
+    
