@@ -31,12 +31,10 @@ int main() {
 	}
 	//cin >> M;
 	scanf("%d",&M);
-	//for (int i = 0; i < M + 1; i++) { answer[i] = 0; }
 	query = new pair<int, int>[M + 1];
 	sqrtQuery = new pair<pair<int, int>, int>[M + 1];
 	for (int i = 1; i < M + 1; i++) {
 		scanf("%d %d", &query[i].first, &query[i].second);
-		//cin >> query[i].first >> query[i].second;
 		sqrtQuery[i].first = pair<int, int>(query[i].first / sqrt(N), query[i].second);
 		sqrtQuery[i].second = i;//순서가 바뀌어도 i로 순차적 출력을 해줘야함
 	}
