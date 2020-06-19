@@ -9,7 +9,8 @@
 13545 : 모스알고리즘  
 11401  
 1260 : dfs bfs  
-11066 dp
+11066 dp  
+2110 공유기설치 이분탐색문제
 # CAREFUL
 * Python 런타임에러 : 입력시 .split()으로 나눠 받기
 * input() 보다 sys.stdin.readline 사용하는게 속도가 훨씬 빠르다!!!!!!!!!!!
