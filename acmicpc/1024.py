@@ -12,7 +12,7 @@ def fibo(num):
 while L<=100:
     x = (N-fibo(L))/L
     y = (N-fibo(L))%L
-    if y == 0 and x>=0:
+    if y == 0 and x>=-1:
         for ans in range(1,L+1):
             print(int(x+ans), end = ' ')
         break
