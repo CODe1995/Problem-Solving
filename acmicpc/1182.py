@@ -1,21 +1,37 @@
-N,S = map(int,input().split())
-arr = list(map(int,input().split()))
-arr.sort()
-cnt = 0
+arr = [None]
+changepos = 0
+def main():
+    global arr, changepos
+    N,S = map(int,input().split())
+    arr = list(map(int,input().split()))
+    arr.sort()
+    cnt = 0
+    changepos = 0
+    for i in range(1,len(arr)):
+        arr[i] += arr[i-1]
+        if arr[i]>arr[i-1] and changepos==0:changepos=i
 
-for i in range(1,len(arr)):
-    arr[i] += arr[i-1]
+    start = 1
+    end = changepos    
 
-start = 0
-end = 0
+    while start<=end and end<len(arr):
+        presum = prefix(start,end)        
+        if presum == S:
+            cnt+=1
+            start+=1
+        elif presum < S:
+            end+=1
+        else:
+            start+=1
+    # print(arr,changepos)
+    print(cnt)
 
-while start<=end and end<len(arr):
-    prefix = arr[start] if start==end else arr[end]-arr[start] 
-    if  prefix == S:
-        cnt+=1
-        start+=1
-    elif prefix < S:
-        end+=1
+def prefix(t,f):    #to, from
+    # print(t-1,f,arr[t-1]-arr[f])
+    if changepos >1:
+        return -arr[f]+arr[t-1]
     else:
-        start+=1
-print(cnt)
+        return arr[f]-arr[t-1]
+
+if __name__ == "__main__":
+    main()
