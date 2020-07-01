@@ -1,19 +1,21 @@
 N,S = map(int,input().split())
 arr = list(map(int,input().split()))
 arr.sort()
+cnt = 0
 
-def dynamic_programming(arrs):
-    cache = [None] * len(arrs)
-    cache[0] = arr[0]
+for i in range(1,len(arr)):
+    arr[i] += arr[i-1]
 
-    for i in range(1,len(arr)):
-        cache[i] = max(0,cache[i-1])+arr[i]
-    
-    return max(cache)
+start = 0
+end = 0
 
-
-if len(arr)>1:
-    for i in range(1,len(arr)):
-        arr[i] = arr[i-1]+arr[i]
-print(arr)
-print(dynamic_programming(arr))
+while start<=end and end<len(arr):
+    prefix = arr[start] if start==end else arr[end]-arr[start] 
+    if  prefix == S:
+        cnt+=1
+        start+=1
+    elif prefix < S:
+        end+=1
+    else:
+        start+=1
+print(cnt)
