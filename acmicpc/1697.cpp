@@ -12,7 +12,6 @@ void main()
     int N, K, X;
     cin >> N >> K;
     X = N;
-    //cout << N << K << X << endl;    
-
+    //cout << N << K << X << endl;    1
     cout << K - N << endl;
 }
