@@ -1,19 +1,15 @@
+cnt = 0
+N,S = None,None
+
+def dfs(i, su):
+    global cnt
+    if i==N: return
+    if su+arr[i] == S:
+        cnt+=1
+    dfs(i+1,su)    
+    dfs(i+1,su+arr[i])
+
 N,S = map(int,input().split())
 arr = list(map(int,input().split()))
-arr.sort()
-
-def dynamic_programming(arrs):
-    cache = [None] * len(arrs)
-    cache[0] = arr[0]
-
-    for i in range(1,len(arr)):
-        cache[i] = max(0,cache[i-1])+arr[i]
-    
-    return max(cache)
-
-
-if len(arr)>1:
-    for i in range(1,len(arr)):
-        arr[i] = arr[i-1]+arr[i]
-print(arr)
-print(dynamic_programming(arr))
+dfs(0,0)
+print(cnt)
