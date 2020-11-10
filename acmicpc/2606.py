@@ -9,8 +9,7 @@ def bfs(graph,root):
             if n in graph:
                 tmp = list(set(graph[n])-set(visited))
                 dq += tmp
-    return len(visited) #최종적으로 방문한 노드의 개수만 반환
-                
+    return len(visited) #최종적으로 방문한 노드의 개수만 반환                
 
 cpnum = int(input())
 conn = int(input())
