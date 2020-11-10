@@ -1,21 +1,22 @@
-from collections import deque,defaultdict
-n,m,v = map(int,input().split())
-arr=[]
-verset=defaultdict(list)
-for i in range(m):
-    arr.append(list(map(int,input().split())))
-    verset[arr[i][0]].append(arr[i][1])
-    verset[arr[i][1]].append(arr[i][0])
-for i in range(1,m+1):
-    verset[i]=set(verset[i])
-# print(verset)
+from collections import deque
+
+#정점의 개수, 간선의 개수, 정점의 번호
+N,M,V = map(int,input().split())
+lst = list()
+for i in range(M):
+    lst.append(list(map(int,input().split())))
+
 
 def dfs(graph,root):
     visited = []
     stack = [root]
-
+    while stack:
+        n = stack.pop()
+        
     return
 
-root=v
-print(dfs(verset,root))
-# print(bfs(verset,root))
+def bfs(graph,root):
+    return
+
+print(dfs(lst,V))
+print(bfs(lst,V))
