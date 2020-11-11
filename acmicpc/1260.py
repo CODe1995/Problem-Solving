@@ -4,7 +4,7 @@ sys.setrecursionlimit(10**8)
 #정점의 개수, 간선의 개수, 정점의 번호
 N,M,V = map(int,sys.stdin.readline().split())
 graph = {}
-visited = [0] * (N+1)
+visited = [0] * (1001)
 for i in range(M):
     a,b = map(int, sys.stdin.readline().split())
     if a not in graph: graph[a] = [b]
@@ -13,7 +13,7 @@ for i in range(M):
     elif a not in graph[b]: graph[b].append(a)
     #양방향 노드 추가
 
-def dfs(root):
+def dfs(root):    
     if visited[root]==0:
         visited[root]=1
         print(root,end=' ')
@@ -23,11 +23,11 @@ def dfs(root):
                 dfs(i)
 
 def bfs(root):
-    visited = [0]*(N+1)
+    visited = [0]*1001
     dq = deque([root])
+    visited[root] = 1
     while dq:
         n = dq.popleft()
-        visited[n] = 1
         print(n,end= ' ')
         graph[n].sort()
         for i in graph[n]:
