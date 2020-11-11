@@ -7,12 +7,10 @@ def BFS(field,root,visited):    #visited 반환
         x,y = n.popleft() #방문한 곳 제거, 좌표 저장
         visited[y][x] = 1
         for dx,dy in direction:
-            try:
+            if y+dy < len(field) and x+dx < len(field[0]):
                 # 배추가 심어져있고, 아직 방문 안한경우
                 if field[y+dy][x+dx]==1 and visited[y+dy][x+dx]==0:
                     n.append([x+dx,y+dy])
-            except Exception:   #범위 초과로 온거라서 반복문 다시 돌게하면 됌
-                continue
     return visited        
 
 if __name__ == "__main__":    
@@ -27,7 +25,7 @@ if __name__ == "__main__":
             stack.append([n1,n2])   #배추가 있는 좌표값 저장
             field[n2][n1] = 1
         cnt = 0
-        for i,[x,y] in enumerate(stack):
+        for [x,y] in stack:
             if visited[y][x] == 0:    #방문한 기록 없으면
                 visited = BFS(field,[x,y],visited)    #방문
                 cnt+=1
