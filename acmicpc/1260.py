@@ -1,6 +1,6 @@
 from collections import deque
 import sys
-sys.setrecursionlimit(1000000)
+sys.setrecursionlimit(10**8)
 #정점의 개수, 간선의 개수, 정점의 번호
 N,M,V = map(int,sys.stdin.readline().split())
 graph = {}
