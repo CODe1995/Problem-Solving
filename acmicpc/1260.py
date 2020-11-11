@@ -4,6 +4,8 @@ sys.setrecursionlimit(10**8)
 #정점의 개수, 간선의 개수, 정점의 번호
 N,M,V = map(int,sys.stdin.readline().split())
 graph = {}
+for i in range(1,N+1):
+    graph[i]=[]
 visited = [0] * (1001)
 for i in range(M):
     a,b = map(int, sys.stdin.readline().split())
@@ -35,8 +37,6 @@ def bfs(root):
                 dq.append(i)
                 visited[i] = 1
 
-if V not in graph:
-    V = list(graph.keys())[0]
 dfs(V)
 print()
 bfs(V)
