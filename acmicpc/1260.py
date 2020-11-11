@@ -35,7 +35,8 @@ def bfs(root):
                 dq.append(i)
                 visited[i] = 1
 
-    
+if V not in graph:
+    V = list(graph.keys())[0]
 dfs(V)
 print()
 bfs(V)
