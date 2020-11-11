@@ -1,6 +1,7 @@
 import sys
 from collections import deque
-def BFS(field,root,visited):    #visited 반환
+visited = list()
+def BFS(field,root):    #visited 반환
     direction = [[1,0],[0,1],[-1,0],[0,-1]]
     n = deque([root])   #다음 방문지        
     while n:
@@ -10,8 +11,7 @@ def BFS(field,root,visited):    #visited 반환
             if y+dy < len(field) and x+dx < len(field[0]):
                 # 배추가 심어져있고, 아직 방문 안한경우
                 if field[y+dy][x+dx]==1 and visited[y+dy][x+dx]==0:
-                    n.append([x+dx,y+dy])
-    return visited        
+                    n.append([x+dx,y+dy])  
 
 if __name__ == "__main__":    
     T = int(sys.stdin.readline())
@@ -27,7 +27,7 @@ if __name__ == "__main__":
         cnt = 0
         for [x,y] in stack:
             if visited[y][x] == 0:    #방문한 기록 없으면
-                visited = BFS(field,[x,y],visited)    #방문
+                BFS(field,[x,y])    #방문
                 cnt+=1
 
         # for i in visited:
