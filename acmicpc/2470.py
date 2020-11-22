@@ -4,16 +4,21 @@ input = sys.stdin.readline
 N = int(input().rstrip())
 arr = list(map(int,input().rstrip().split()))
 arr.sort()
-nL=0
-nR=0
+nL,nR=0,0
 num = 1000000001    #최대값
-for i in range(N):
-    for j in range(i+1,N):
-        if num>abs(arr[i]+arr[j]):
-            num=abs(arr[i]+arr[j])
-            nL = arr[i]
-            nR = arr[j]
-            if num==0:
-                break      
+left,right=0,len(arr)-1
+while left!=right:
+    tP = abs(arr[left]+arr[right])
+    if num>tP:
+        num=tP
+        nL = arr[left]
+        nR = arr[right]
+        if num==0:
+            break
+    if num<tP:#합을 낮춰야함
+        right-=1    #합이 작아짐
+    else:
+        left+=1 #합이 커짐    
+      
 for n in sorted([nL,nR]):
     print(n,end=' ')
