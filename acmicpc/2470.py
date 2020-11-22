@@ -6,10 +6,10 @@ arr = list(map(int,input().rstrip().split()))
 arr.sort()
 nL,nR=0,0
 left,right=0,len(arr)-1
-num = arr[left]+arr[right]
+num = abs(arr[left]+arr[right])
 while left!=right:
     tP = arr[left]+arr[right]
-    if num>abs(tP):
+    if num>=abs(tP):
         num=abs(tP)
         nL = arr[left]
         nR = arr[right]
