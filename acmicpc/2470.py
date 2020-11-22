@@ -15,7 +15,7 @@ while left!=right:
         nR = arr[right]
         if num==0:
             break
-    if num<tP:#합을 낮춰야함
+    if 0<tP:#합을 낮춰야함
         right-=1    #합이 작아짐
     else:
         left+=1 #합이 커짐    
