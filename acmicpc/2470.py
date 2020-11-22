@@ -4,10 +4,9 @@ input = sys.stdin.readline
 N = int(input().rstrip())
 arr = list(map(int,input().rstrip().split()))
 arr.sort()
-print(arr)
 nL,nR=0,0
-num = 1000000001    #최대값
 left,right=0,len(arr)-1
+num = arr[left]+arr[right]
 while left!=right:
     tP = arr[left]+arr[right]
     if num>abs(tP):
