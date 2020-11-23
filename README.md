@@ -6,8 +6,10 @@
 
 
 # 알고리즘 이해도
-- Dynamic Programming ![10%](https://progress-bar.dev/50)
-- BFS/DFS ![20%](https://progress-bar.dev/50)
+알고리즘 | 이해도
+-------- | -------
+Dynamic Programming | ![10%](https://progress-bar.dev/10)
+BFS/DFS | ![20%](https://progress-bar.dev/20)
 
 
 
