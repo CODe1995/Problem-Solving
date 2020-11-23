@@ -1,9 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-.vscode/
+!.vscode/
+!.vscode/launch.json
+.vscode/*
 /Debug
 /.vs
 /acmicpc/Debug
 acmicpc.*
 acmicpc.sln
-*.json
