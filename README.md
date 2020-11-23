@@ -1,3 +1,16 @@
+# 사용가능 언어
+- [ ] Java
+- [x] C/C++
+- [x] Python3  
+- [x] JavaScript  
+
+
+# 알고리즘 이해도
+- Dynamic Programming ![10%](https://progress-bar.dev/50)
+- BFS/DFS ![20%](https://progress-bar.dev/50)
+
+
+
 # 해결중인 문제
 일자 | 문제번호 | 상태
 --- | -------- | -------
