@@ -8,9 +8,10 @@
 # 알고리즘 이해도
 알고리즘 | 이해도
 -------- | -------
-Dynamic Programming | ![10%](https://progress-bar.dev/10)
+Dynamic Programming | ![1%](https://progress-bar.dev/1)
 BFS/DFS | ![20%](https://progress-bar.dev/20)
-
+Segment tree | ![0%](https://progress-bar.dev/0)
+Binary Search | ![5%](https://progress-bar.dev/5)
 
 
 # 해결중인 문제
