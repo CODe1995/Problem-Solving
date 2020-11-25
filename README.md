@@ -17,7 +17,7 @@ Binary Search | ![5%](https://progress-bar.dev/5)
 # 해결중인 문제
 일자 | 문제번호 | 문제 | 상태
 --- | -------- | ------- | -----
-? | 2357 |  |  wrong
+? | 2357 |  |  ![wrong](https://img.shields.io/static/v1?label&message=wrong&color=red)
 ? | 1173 |  |  wrong
 ? | 1991 | 트리순회 자료구조 [트리] | resolving
 ? | 6064 | 카잉달력 |  wrong
