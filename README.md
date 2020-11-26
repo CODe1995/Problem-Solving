@@ -31,3 +31,4 @@ Binary Search | ![5%](https://progress-bar.dev/5)
 ? | 1072 | 오답 | ![wrong](https://img.shields.io/static/v1?label&message=wrong&color=red)
 20.11.22 | 9202 |  | resolving
 20.11.16 | 10844 | | ![wrong](https://img.shields.io/static/v1?label&message=wrong&color=red)
+20.11.25 | 1236 | 성지키기 | resolving
