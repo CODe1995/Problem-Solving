@@ -1,13 +1,17 @@
 n,r,c = map(int,input().split())
 cnt = 0
+direction = [[0,0],[1,0],[0,1],[1,1]]
 def solve(size, x, y):
     global cnt
     # print(size,'(',x,',',y,')',cnt)
-    if size==1:
-        if x==c and y==r:
-            print(cnt)
-            return
-        cnt+=1
+    if size==2:
+        for dx,dy in direction:
+            nx = dx+x
+            ny = dy+y
+            if nx==c and ny==r:
+                print(cnt)
+                return
+            cnt+=1
     else:
         solve(size/2,x,y)#leftTop
         solve(size/2,x+size/2,y)#rightTop
