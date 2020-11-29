@@ -1,5 +1,4 @@
 n,r,c = map(int,input().split())
-array = [[0]* 2**n for _ in range(2**n)]
 cnt = 0
 def solve(size, x, y):
     global cnt
