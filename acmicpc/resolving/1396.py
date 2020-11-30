@@ -32,20 +32,20 @@ def findParent(a,b):
 
 #정점, 간선
 vertex, edge = map(int,input().rstrip().split())
-graph = []
+graph = [-1]*(edge)
 for i in range(1,edge+1):
     a,b,c = map(int,input().rstrip().split())
-    graph.append([c,[a,b]])
+    graph[i-1]= [c,[a,b]]
 # print(graph)
-graph.sort(key= lambda x: x[0])
+graph.sort(key=lambda x: x[0])
 # print('최소 거리로 정렬 :',graph)
 
 #쿼리 입력
 q = int(input())
-query = []
-for _ in range(q):
+query = [-1]*MAXARR
+for i in range(q):
     a,b = map(int,input().rstrip().split())
-    query.append([a,b])
+    query[i]=[a,b]
 
 # 간선 연결
 answer = [-1]*MAXARR
