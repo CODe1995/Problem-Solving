@@ -13,6 +13,7 @@ BFS/DFS | ![20%](https://progress-bar.dev/20)
 Segment tree | ![0%](https://progress-bar.dev/0)
 Binary Search | ![5%](https://progress-bar.dev/5)
 
+[D3_url]:https://img.shields.io/static/v1?label&message=D3&color=blue
 [wrong_url]:https://img.shields.io/static/v1?label&message=wrong&color=red
 [timeout_url]:https://img.shields.io/static/v1?label&message=TimeOut&color=yellow
 [resolving_url]:https://img.shields.io/static/v1?label&message=resolving&color=green
@@ -34,4 +35,5 @@ Binary Search | ![5%](https://progress-bar.dev/5)
 ? | 1072 | 오답 | ![wrong][wrong_url]
 20.11.22 | 9202 |  | ![resolving][resolving_url]
 20.11.16 | 10844 | | ![wrong][wrong_url]
-20.11.30 | 16977 | ![D3](https://img.shields.io/static/v1?label&message=D3&color=blue) SegTree&PBS | ![timeout][timeout_url]
+20.11.30 | 16977 | ![D3][D3_url] SegTree&PBS | ![timeout][timeout_url]
+20.11.30 | 1396 | PBS | ![timeout][timeout_url]
