@@ -31,7 +31,6 @@ Binary Search | ![5%](https://progress-bar.dev/5)
 ? | 13545 | 모스알고리즘 | ![resolving][resolving_url]
 ? | 11401  | | ![wrong][wrong_url]
 ? | 11066 | dp | ![resolving][resolving_url]
-? | 2110 | 이분탐색문제 | ![resolving][resolving_url]
 ? | 1072 | 오답 | ![wrong][wrong_url]
 20.11.22 | 9202 |  | ![resolving][resolving_url]
 20.11.16 | 10844 | | ![wrong][wrong_url]
