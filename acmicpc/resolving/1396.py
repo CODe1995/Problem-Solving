@@ -5,6 +5,7 @@ MAXARR = 111111
 #전역부분
 import sys
 input = sys.stdin.readline
+print = sys.stdout.write
 parent = [-1]*MAXARR
 
 #부모 노드를 찾는 함수
@@ -57,12 +58,8 @@ for i in range(edge):
         if answer[j]==-1 and findParent(query[j][0],query[j][1]):
             answer[j] = i
             treeSize[j] = -parent[getParent(query[j][0])]
-#     print(i,'answer :',answer[:vertex+1])
-#     print(i, 'treeSize :',treeSize[:vertex+1])
-# print('parent :',parent[:7])
-# sys.exit()
 for i in range(q):
     if answer[i]==-1:#경로가 없을때
-        print(-1)
+        print(str(-1))
     else:
-        print(graph[answer[i]][0],treeSize[i])
+        print(str(graph[answer[i]][0])+' '+str(treeSize[i])+'\n')
