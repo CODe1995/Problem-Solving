@@ -24,7 +24,8 @@ def BS(arr,height):#binary search 함수
             right = mid-1
         else:
             left = mid+1
-    return len(arr[left:])
+    return len(arr)-left
+
 for height in range(1,h+1):#i는 높이
     sky_cnt = BS(arr_sky,h-height+1)
     ground_cnt = BS(arr_ground,height)
