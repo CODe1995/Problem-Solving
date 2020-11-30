@@ -30,9 +30,9 @@ while spnt<=epnt:
     if cnt>=c:#설치갯수가 많거나 같으면
         #거리를 늘려서 시도해볼만하다.
         #즉 mid 크기를 키워야한다.
-        spnt+=1
+        spnt=mid+1
         answer = mid
     elif cnt<c:#설치 공유기 갯수가 적으면
         #mid 크기를 줄여야한다.(거리를 좁히자)
-        epnt-=1
+        epnt=mid-1
 print(answer)
