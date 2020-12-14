@@ -12,7 +12,6 @@
 # 해결중인 문제
 일자 | 문제번호 | 문제 | 상태
 --- | -------- | ------- | -----
-? | 2357 |  |  ![wrong][wrong_url]
 ? | 1173 |  |  ![wrong][wrong_url]
 ? | 1991 | 트리순회 자료구조 [트리] | ![resolving][resolving_url]
 ? | 6064 | 카잉달력 |  ![wrong][wrong_url]
