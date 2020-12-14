@@ -26,3 +26,4 @@
 20.11.16 | 10844 | | ![wrong][wrong_url]
 20.11.30 | 16977 | ![D3][D3_url] SegTree&PBS | ![timeout][timeout_url]
 20.11.30 | 1396 | PBS | ![timeout][timeout_url]
+20.12.15 | 10999 | Seg+Lazy | ![timeout][timeout_url]
