@@ -4,7 +4,7 @@ tree = list()
 nodes = list()
 
 def update(start,end,index,changeIdx,changeNum):
-    if index<start or end<index:return
+    if changeIdx<start or end<changeIdx:return
     tree[index]+=changeNum-nodes[changeIdx]
     if start==end:return
     mid = (start+end)//2
@@ -41,3 +41,4 @@ if __name__ == "__main__":
         else:
             print(query(0,n-1,1,x-1,y-1))
         update(0,n-1,1,a-1,b)
+        nodes[a-1]=b
