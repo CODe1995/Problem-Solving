@@ -26,7 +26,7 @@ def init(start,end,index):
     mid = (start+end)//2
     tree[index] = init(start,mid,index*2)+init(mid+1,end,index*2+1)
     return tree[index]
-    
+
 if __name__ == "__main__":    
     n,q = map(int,input().rstrip().split())
     tree = [0]*(n*4)
@@ -36,5 +36,8 @@ if __name__ == "__main__":
         # x~y까지 합을 출력하라
         # a번째 수를 b로 바꿔라
         x,y,a,b = map(int,input().rstrip().split())
-        print(query(0,n-1,1,x-1,y-1))
+        if x>y:
+            print(query(0,n-1,1,y-1,x-1))
+        else:
+            print(query(0,n-1,1,x-1,y-1))
         update(0,n-1,1,a-1,b)
