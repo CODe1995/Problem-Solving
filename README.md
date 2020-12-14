@@ -4,15 +4,6 @@
 - [x] Python3  
 - [x] JavaScript  
 
-
-# 알고리즘 이해도
-알고리즘 | 이해도
--------- | -------
-Dynamic Programming | ![2%](https://progress-bar.dev/2)
-BFS/DFS | ![20%](https://progress-bar.dev/20)
-Segment tree | ![0%](https://progress-bar.dev/0)
-Binary Search | ![5%](https://progress-bar.dev/5)
-
 [D3_url]:https://img.shields.io/static/v1?label&message=D3&color=blue
 [wrong_url]:https://img.shields.io/static/v1?label&message=wrong&color=red
 [timeout_url]:https://img.shields.io/static/v1?label&message=TimeOut&color=yellow
