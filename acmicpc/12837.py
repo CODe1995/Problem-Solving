@@ -41,6 +41,5 @@ if __name__ == "__main__":
                 b,c=c,b
             print(query(0,n-1,1,b-1,c-1))
         elif a==1:#추가
-            diff = c - nodes[b-1]   #차이
-            nodes[b-1]=c
-            update(0,n-1,1,b-1,diff)
+            nodes[b-1]+=c#추가해줌
+            update(0,n-1,1,b-1,c)
