@@ -6,12 +6,11 @@ nodes = list()
 
 def update(start,end,index,cidx,cnum):
     if cidx < start or end < cidx: return
-    tree[index]+= cnum - nodes[cidx]
+    tree[index]+= cnum
     if start==end:  return    
     mid = (start+end)//2
     update(start,mid,index*2,cidx,cnum)
     update(mid+1,end,index*2+1,cidx,cnum)
-
 
 def query(start,end,index,left,right):
     if left>end or right<start:
@@ -37,8 +36,11 @@ if __name__ == "__main__":
     for _ in range(m):
         # a==0: Sum, 1: Modify
         a,b,c = map(int,input().rstrip().split())
-        if a==0:
+        if a==0:#sum
+            if b>c:#범위가 반전되는 경우
+                b,c=c,b
             print(query(0,n-1,1,b-1,c-1))
-        elif a==1:            
-            update(0,n-1,1,b-1,c)
+        elif a==1:#update          
+            dff = c-nodes[b-1]
             nodes[b-1]=c
+            update(0,n-1,1,b-1,dff)
