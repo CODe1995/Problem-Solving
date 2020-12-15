@@ -23,6 +23,7 @@ def query(start,end,index,left,right):
 
 def init(start,end,index):
     if start==end:
+        tree[index] = nodes[start]
         return tree[index]
     mid = (start+end)//2
     tree[index] = init(start,mid,index*2)+init(mid+1,end,index*2+1)
