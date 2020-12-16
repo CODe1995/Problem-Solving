@@ -21,7 +21,6 @@
 ? | 13545 | 모스알고리즘 | ![resolving][resolving_url]
 ? | 11401  | | ![wrong][wrong_url]
 ? | 11066 | dp | ![resolving][resolving_url]
-? | 1072 | 오답 | ![wrong][wrong_url]
 20.11.22 | 9202 |  | ![resolving][resolving_url]
 20.11.16 | 10844 | | ![wrong][wrong_url]
 20.11.30 | 16977 | ![D3][D3_url] SegTree&PBS | ![timeout][timeout_url]
