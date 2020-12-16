@@ -1,19 +1,21 @@
-import sys,math
+import sys
 input = sys.stdin.readline
+def ii():return int(input())
+def mii():return map(int,input().rstrip().split())
+def lmii():return list(map(int,input().rstrip().split()))
 
-x,y= map(int,input().split()) #게임횟수, 이긴게임
-t = math.trunc(y/x * 100) #승률
-bl = 1000000000-x # 이 부분이 의미가 없음
-# x의 입력값이 10억 이하라는 말이지 게임을 진행 했을때 10억을 넘어갈 수도 있음
-# 즉, 승률이 변하지 않는 로직을 찾거나
-
-if y==0 or t==math.trunc((y+bl)/(x+bl)*100):
-    print(-1)
-else:    
-    cnt = 0
-    # 이 부분에서 x와 y를 1씩 늘릴게 아니라 이분 탐색처럼 크게 늘려야함.
-    while t==math.trunc(y/x*100):
-        x+=1
-        y+=1
-        cnt+=1
-    print(cnt)
+x,y = mii()
+z = y*100//x
+left,right = 0,10**9
+ans = -1
+while left<=right:
+    mid = (left+right)//2
+    res = ((y+mid)*100)//(x+mid)
+    if z<res:
+        right = mid-1
+        ans = mid
+        # print(left,mid,right)
+    else:
+        left = mid+1
+        # print(left,mid,right)
+print(ans)
