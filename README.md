@@ -4,6 +4,7 @@
 - [x] Python3  
 - [x] JavaScript  
 
+[G_url]:https://img.shields.io/static/v1?label&message=G&color=yellow
 [D3_url]:https://img.shields.io/static/v1?label&message=D3&color=blue
 [wrong_url]:https://img.shields.io/static/v1?label&message=wrong&color=red
 [timeout_url]:https://img.shields.io/static/v1?label&message=TimeOut&color=yellow
@@ -17,7 +18,7 @@
 ? | 6064 | 카잉달력 |  ![wrong][wrong_url]
 ? | 1913 | 달팽이 | ![resolving][resolving_url]
 ? | 5463 | 건포도 - 아마 DFS | ![resolving][resolving_url] 
-? | 1509 | palindrome | ![resolving][resolving_url]
+? | 1509 | ![G][G_url]팰린드롬 | ![resolving][resolving_url]
 ? | 13545 | 모스알고리즘 | ![resolving][resolving_url]
 ? | 11401  | | ![wrong][wrong_url]
 ? | 11066 | dp | ![resolving][resolving_url]
@@ -28,4 +29,4 @@
 20.11.30 | 1396 | PBS | ![timeout][timeout_url]
 20.12.15 | 10999 | Seg+Lazy | ![timeout][timeout_url]
 20.12.16 | 10090 | Seg | ![resolving][resolving_url]
-20.12.16 | 1517 | BIT | ![resolving][resolving_url]
+20.12.16 | 1517 | ![G][G_url]BIT | ![resolving][resolving_url]
