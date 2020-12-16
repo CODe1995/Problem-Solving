@@ -34,7 +34,6 @@ def init(start,end,index):
     return tree[index]
 
 init(0,n-1,1)
-# print(tree)
 for _ in range(q):
     c,a,b = mii()
     if c == 0:#첫번째쿼리 max
@@ -42,4 +41,6 @@ for _ in range(q):
         print(res)
     else:#두번재 쿼리 update
         diff = b-nodes[a-1]
+        nodes[a-1]=b
         update(0,n-1,1,a-1,diff)
+        print('update: ',tree)
