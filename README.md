@@ -28,3 +28,4 @@
 20.11.30 | 1396 | PBS | ![timeout][timeout_url]
 20.12.15 | 10999 | Seg+Lazy | ![timeout][timeout_url]
 20.12.16 | 10090 | Seg | ![resolving][resolving_url]
+20.12.16 | 1517 | BIT | ![resolving][resolving_url]
