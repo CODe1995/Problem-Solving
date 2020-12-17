@@ -30,7 +30,13 @@ def calc(L,R):
     
 def query(start,end,index,left,right):
     if left>end or right < start:#범위밖
-        return tree[0]  #0번은 어차피 안쓰임
+        tmp={
+            'ls' :-MAXNUM,#왼쪽 구간 최대합
+            'rs' : -MAXNUM,#우측 구간 최대합
+            'lrs' : -MAXNUM,#구간 전체(좌+우) 최대합
+            'mxs' : 0#좌측,우측,전체 최대합 중의 최대
+        }
+        return tmp 
     if left<=start and end<=right:#범위내
         return tree[index]
     mid = (start+end)//2
@@ -39,14 +45,15 @@ def query(start,end,index,left,right):
 
 #시작점, 끝점, 현재위치, 수정좌표위치, 수정될값
 def update(start,end,index,cidx,cnum):#init과 동일
-    if cidx>end or cidx<start:return
+    if cidx>end or cidx<start:return tree[index]
     if start==end:
         tree[index]={'ls' : cnum, 'rs' : cnum, 'lrs' : cnum, 'mxs' : cnum}        
-        return
+        return tree[index]
     mid = (start+end)//2        
-    update(start,mid,index*2,cidx,cnum)
-    update(mid+1,end,index*2+1,cidx,cnum)
-    tree[index] = calc(tree[index*2],tree[index*2+1])
+    r1=update(start,mid,index*2,cidx,cnum)
+    r2=update(mid+1,end,index*2+1,cidx,cnum)
+    tree[index] = calc(r1,r2)
+    return tree[index]
 
 def printTree():    
     print('============Tree===========')
