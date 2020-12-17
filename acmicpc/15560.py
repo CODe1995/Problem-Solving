@@ -10,8 +10,7 @@ MAXNUM = 10**3+1
 nodes = list()
 n,q,u,v = mii()
 nodes = lmii()
-nh = ceil(log2(n))
-ncnt = (1 << (nh+1))
+ncnt = n*4
 tree=[{
     'ls' :-MAXNUM,#왼쪽 구간 최대합
     'rs' : -MAXNUM,#우측 구간 최대합
