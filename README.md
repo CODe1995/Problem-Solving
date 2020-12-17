@@ -30,3 +30,5 @@
 20.12.15 | 10999 | ![P][P_url] | Seg+Lazy | ![timeout][timeout_url]
 20.12.16 | 10090 | ![G][G_url] | Seg | ![resolving][resolving_url]
 20.12.16 | 1517 | ![G][G_url] |BIT | ![resolving][resolving_url]
+20.12.17 | 15560 | ![G][G_url] | Seg 맞왜틀 | ![wrong][wrong_url]
+20.12.17 | 15561 | ![P][P_url] | Seg 맞왜틀 | ![wrong][wrong_url]
