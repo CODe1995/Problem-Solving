@@ -6,7 +6,7 @@ def mii():return map(int,input().rstrip().split())
 def lmii():return list(map(int,input().rstrip().split()))
 ##########################################################
 from math import ceil,log2
-MAXNUM = 10**2+1
+MAXNUM = 10**3+1
 nodes = list()
 n,q,u,v = mii()
 nodes = lmii()
@@ -48,9 +48,15 @@ def update(start,end,index,cidx,cnum):#init과 동일
     update(mid+1,end,index*2+1,cidx,cnum)
     tree[index] = calc(tree[index*2],tree[index*2+1])
 
+def printTree():    
+    print('============Tree===========')
+    for i in tree:
+        print(i)
+
 for i in range(n):#u와 v의 값이 반영된 쿼리 업데이트(init)
     # print("init_updates(%d,%d,%d,%d,%d)"%(0,n-1,i,1,u*nodes[i]+v))
     update(0,n-1,1,i,u*nodes[i]+v)
+    # printTree()
 
 # for i in range(0,ncnt):
 #     print(tree[i])
@@ -62,5 +68,4 @@ for _ in range(q):
     else:#두번재 쿼리 update
         nodes[a-1]=b
         update(0,n-1,1,a-1,u*b+v)
-        # for i in tree:
-        #     print(i)
+        # printTree()
