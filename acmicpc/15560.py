@@ -6,10 +6,10 @@ def mii():return map(int,input().rstrip().split())
 def lmii():return list(map(int,input().rstrip().split()))
 ##########################################################
 from math import ceil,log2
-MAXNUM = 10**3+1
+MAXNUM = 1e9
 nodes = list()
 n,q,u,v = mii()
-nodes = lmii()
+nodes = [0]+lmii()
 ncnt = n*4
 tree=[{
     'ls' :-MAXNUM,#왼쪽 구간 최대합
@@ -59,9 +59,9 @@ def printTree():
     for i in tree:
         print(i)
 
-for i in range(n):#u와 v의 값이 반영된 쿼리 업데이트(init)
+for i in range(1,n+1):#u와 v의 값이 반영된 쿼리 업데이트(init)
     # print("init_updates(%d,%d,%d,%d,%d)"%(0,n-1,i,1,u*nodes[i]+v))
-    update(0,n-1,1,i,u*nodes[i]+v)
+    update(1,n,1,i,u*nodes[i]+v)
     # printTree()
 
 # for i in range(0,ncnt):
@@ -70,8 +70,8 @@ for i in range(n):#u와 v의 값이 반영된 쿼리 업데이트(init)
 for _ in range(q):
     c,a,b = mii()
     if c == 0:#첫번째쿼리 max
-        print(query(0,n-1,1,a-1,b-1)['mxs']-v)
+        print(query(1,n,1,a,b)['mxs']-v)
     else:#두번재 쿼리 update
-        nodes[a-1]=b
-        update(0,n-1,1,a-1,u*b+v)
+        nodes[a]=b
+        update(1,n,1,a,u*b+v)
         # printTree()
