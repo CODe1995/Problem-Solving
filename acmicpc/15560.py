@@ -32,8 +32,8 @@ def query(start,end,index,left,right):
         tmp={
             'ls' :-MAXNUM,#왼쪽 구간 최대합
             'rs' : -MAXNUM,#우측 구간 최대합
-            'lrs' : -MAXNUM,#구간 전체(좌+우) 최대합
-            'mxs' : 0#좌측,우측,전체 최대합 중의 최대
+            'lrs' : 0,#구간 전체(좌+우) 최대합
+            'mxs' : -MAXNUM#좌측,우측,전체 최대합 중의 최대
         }
         return tmp 
     if left<=start and end<=right:#범위내
