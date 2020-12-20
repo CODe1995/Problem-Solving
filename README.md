@@ -10,6 +10,7 @@
 [D_url]:https://img.shields.io/static/v1?label&message=D&color=blue
 [wrong_url]:https://img.shields.io/static/v1?label&message=wrong&color=red
 [timeout_url]:https://img.shields.io/static/v1?label&message=TimeOut&color=yellow
+[mle_url]:https://img.shields.io/static/v1?label&message=MLE&color=yellow
 [resolving_url]:https://img.shields.io/static/v1?label&message=resolving&color=green
 
 # 해결중인 문제
@@ -31,3 +32,4 @@
 20.12.16 | 10090 | ![G][G_url] | Seg | ![resolving][resolving_url]
 20.12.16 | 1517 | ![G][G_url] |BIT | ![resolving][resolving_url]
 20.12.18 | 1905 | ![G][G_url] | Seg | ![resolving][resolving_url]
+20.12.20 | 1944 | ![G][G_url] | MST | ![MLE][mle_url]
