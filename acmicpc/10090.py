@@ -29,7 +29,8 @@ arr.sort()
 ans = 0
 for a,b in arr:
     # ans += query(n)-query(b)#index
-    ans += query(n)-query(b)
-    # print("query({}), update({}), ans({}), tree({})".format(b,b+1,ans,fenwick))
+    qn,qb =query(n),query(b) 
+    ans += qn-qb
+    print("query({})={}, query({})={}".format(n,qn,b,qb))
     update(b+1)
 print(ans)
