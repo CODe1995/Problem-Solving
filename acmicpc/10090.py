@@ -1,29 +1,35 @@
 import sys
 input = sys.stdin.readline
+def ii():return int(input())
+def mii():return map(int,input().rstrip().split())
+def lmii():return list(map(int,input().rstrip().split()))
 #펜 윅 트리, Binary indexded Tree
-tree= list() 
-nodes = list()
+n=0
+arr = list()
+fenwick = list()
 
-def answer(start,end,index,left,right):
-    if left>end or start<right:return 0
-    if left<=start and end<=right:return tree[index]
-    mid = (start+end)//2
-    return answer(start,mid,index*2,left,right)+answer(mid+1,end,index*2+1,left,right)
+def query(index):
+    ret=0
+    while index>0:
+        ret+=fenwick[index]
+        index-=index&-index
+    return ret
+def update(index):
+    while index<=n:
+        fenwick[index]+=1
+        index+=index&-index
 
-def update(node):
-    while node>0:
-        tree[node]+=1
-        node//=2
-
-if __name__ == "__main__":
-    n = int(input())
-    tree = [0]*(n*4)
-    s=1
-    ans=0
-    #첫번째 인덱스 위치 찾기
-    while s<n:s*=2
-    nodes = list(map(int,input().rstrip().split()))
-    for i in nodes:
-        res = answer(1,s,1,i+1,s)
-        ans += res
-        update(i)
+n = ii()
+arr = [0]*n
+fenwick = [0]*(n+1)
+tmp = lmii()
+for idx,num in enumerate(tmp):
+    arr[idx]=[num,idx]
+arr.sort()
+ans = 0
+for a,b in arr:
+    # ans += query(n)-query(b)#index
+    ans += query(n)-query(b)
+    # print("query({}), update({}), ans({}), tree({})".format(b,b+1,ans,fenwick))
+    update(b+1)
+print(ans)
