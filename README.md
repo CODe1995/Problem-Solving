@@ -30,4 +30,4 @@
 20.11.30 | 1396 |![P][P_url] | PBS | ![timeout][timeout_url]
 20.12.15 | 10999 | ![P][P_url] | Seg+Lazy | ![timeout][timeout_url]
 20.12.18 | 1905 | ![G][G_url] | Seg | ![resolving][resolving_url]
-20.12.20 | 1944 | ![G][G_url] | MST | ![MLE][]
+20.12.20 | 1944 | ![G][G_url] | MST | ![MLE][mle_url]
