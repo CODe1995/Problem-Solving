@@ -19,7 +19,15 @@ for _ in range(n):
 # print(st)
 st = sorted(tree.items(),key=lambda x: x[1])
 print(st)
-# ans = 0
-# for key in tree:
+prev= st[0][1]
+ans = 1
+for a,b in st:
+    if a>=prev:
+        ans+=1
+        prev=b
+print(ans)
+    
+
+
     
     
