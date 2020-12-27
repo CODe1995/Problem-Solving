@@ -11,25 +11,21 @@ n = ii()
 arr = list()
 for _ in range(n):
     arr.append(ii())
-arr.sort(reverse=True)
-# print(arr)
-# 음수와 음수
-# 가장 큰 수 2개
-i,j=0,n-1
+arr.sort()
 ans=0
-if n==1:
-    print(sum(arr))
-    sys.exit()
-while i<n:#양수만
-    res = arr[i]*arr[i+1]
-    if arr[i]<0 and arr[i+1]<0:break
-    if res>0:
-        ans+=res
-        i+=2
-    else:#음수 또는 0인 경우
-        break
-while j-1>i:#음수 또는 0
-    res = arr[j]*arr[j-1]
-    ans+=res
-    j-=2
+left,right = 0 , n-1
+for _ in range(right,left,-2):#양수
+    a,b = arr[right],arr[right-1]
+    if a>1 and b>1:ans+=a*b
+    else:break
+    right-=2
+# print('plus',ans)
+for _ in range(left,right,2):#음수
+    a,b = arr[left],arr[left+1]
+    if a<=0 and b<=0:ans+=a*b
+    else:break
+    left+=2
+# print('minus',ans)
+for k in range(left,right+1):
+    ans+=arr[k]
 print(ans)
