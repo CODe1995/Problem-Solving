@@ -7,27 +7,17 @@ def lmii():return list(map(int,input().rstrip().split()))
 ##########################################################
 
 n = ii()
-tree = dict()
+tree = list()
 for _ in range(n):
-    a,b = mii()
-    if a in tree:
-        if tree[a]>b:
-            tree[a] = b
-    else:
-        tree[a] = b
-# st = sorted(tree.items())
-# print(st)
-st = sorted(tree.items(),key=lambda x: x[1])
-print(st)
-prev= st[0][1]
+    tree.append(lmii())
+tree.sort()
+tree = sorted(tree,key=lambda x: x[1])
+# print(tree)
+# sys.exit()
+prev= tree[0][1]
 ans = 1
-for a,b in st:
+for a,b in tree[1:]:
     if a>=prev:
         ans+=1
         prev=b
 print(ans)
-    
-
-
-    
-    
