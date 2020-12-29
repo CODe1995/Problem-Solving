@@ -7,7 +7,7 @@ def ii():return int(input())
 def mii():return map(int,input().rstrip().split())
 def lmii():return list(map(int,input().rstrip().split()))
 ##########################################################
-sys.setrecursionlimit(10**7)
+# sys.setrecursionlimit(10**7)
 n=ii()
 m=ii()
 parent = [i for i in range(n+1)]
