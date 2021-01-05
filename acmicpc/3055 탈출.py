@@ -46,7 +46,7 @@ def bfs():
             for dx,dy in direction:
                 nx,ny = x+dx, y+dy
                 if 0<=nx<width and 0<=ny<height:
-                    if field[ny][nx]=='.':
+                    if field[ny][nx]=='.' and visited[ny][nx]==0:
                         visited[ny][nx]=visited[y][x]+1
                         q.append([nx,ny])
                     elif field[ny][nx]=='D':#종료조건
