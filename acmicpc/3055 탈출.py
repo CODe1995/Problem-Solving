@@ -39,17 +39,18 @@ def bfs():
                 if 0<=nx<width and 0<=ny<height and field[ny][nx]=='.':
                     field[ny][nx]='*'
                     water.add((nx,ny))
-
-        #그 다음 고슴도치가 이동한다.
-        x,y = q.popleft()        
-        for dx,dy in direction:
-            nx,ny = x+dx, y+dy
-            if 0<=nx<width and 0<=ny<height:
-                if field[ny][nx]=='.':
-                    visited[ny][nx]=visited[y][x]+1
-                    q.append([nx,ny])
-                elif field[ny][nx]=='D':#종료조건
-                    return visited[y][x]+1
+        lenq = len(q)
+        for _ in range(lenq):
+            #그 다음 고슴도치가 이동한다.
+            x,y = q.popleft()
+            for dx,dy in direction:
+                nx,ny = x+dx, y+dy
+                if 0<=nx<width and 0<=ny<height:
+                    if field[ny][nx]=='.':
+                        visited[ny][nx]=visited[y][x]+1
+                        q.append([nx,ny])
+                    elif field[ny][nx]=='D':#종료조건
+                        return visited[y][x]+1
     return 'KAKTUS'
 
 print(bfs())
