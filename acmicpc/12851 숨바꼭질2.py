@@ -13,21 +13,25 @@ def lmii():return list(mii())
 maxnum = 100001
 n,k = mii()
 arr = [0]*maxnum
-move = -1
+fastest = maxnum#가장 빠른 시간 저장
 cnt=0
 
 def solve():    
-    global move,cnt
+    global fastest,cnt
     q=deque([n])
     while q:
         x = q.popleft()
-        if x == k:
+        if x == k and fastest>=maxnum:
+            fastest=arr[x]
             cnt+=1
         for i in [x+1,x-1,x*2]:
             if 0<=i<maxnum:
-                if arr[i]==0 or arr[i]==arr[x]+1:
-                    arr[i] = arr[x]+1
-                    q.append(i)
+                if arr[i]==0 or arr[i]>=arr[x]+1:
+                    if fastest<maxnum and fastest==arr[x]+1 and k==i:
+                        cnt+=1
+                    else:
+                        arr[i] = arr[x]+1
+                        q.append(i)
     return '{}\n{}'.format(arr[k],cnt)
 
 print(solve())
