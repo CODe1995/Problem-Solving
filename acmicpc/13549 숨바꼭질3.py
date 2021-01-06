@@ -21,7 +21,7 @@ def solve():
         x = q.popleft()        
         if x==k:
             return arr[x]
-        for i,j in [[x*2,2],[x+1,0],[x-1,1]]:
+        for i,j in [[x-1,0],[x*2,2],[x+1,1]]:
             if 0<=i<maxnum and arr[i]==-1:
                 if j==2:
                     arr[i]=arr[x]
