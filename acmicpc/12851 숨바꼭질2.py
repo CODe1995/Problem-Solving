@@ -12,26 +12,20 @@ def lmii():return list(mii())
 ##########################################################
 maxnum = 100001
 n,k = mii()
-arr = [0]*maxnum
-fastest = maxnum#가장 빠른 시간 저장
-cnt=0
+arr = [[-1,0] for _ in range(maxnum)]
 
 def solve():    
-    global fastest,cnt
     q=deque([n])
+    arr[n]=[0,1]#초기화    
     while q:
         x = q.popleft()
-        if x == k and fastest>=maxnum:
-            fastest=arr[x]
-            cnt+=1
         for i in [x+1,x-1,x*2]:
             if 0<=i<maxnum:
-                if arr[i]==0 or arr[i]>=arr[x]+1:
-                    if fastest<maxnum and fastest==arr[x]+1 and k==i:
-                        cnt+=1
-                    else:
-                        arr[i] = arr[x]+1
-                        q.append(i)
-    return '{}\n{}'.format(arr[k],cnt)
-
-print(solve())
+                if arr[i][0]==-1:#첫방문
+                    arr[i] = [arr[x][0]+1,arr[x][1]]
+                    q.append(i)
+                elif arr[i][0]==arr[x][0]+1:#처음 아닌경우
+                    arr[i][1]+=arr[x][1]#중복되는 횟수를 더해줌    
+solve()
+print(arr[k][0])
+print(arr[k][1])
