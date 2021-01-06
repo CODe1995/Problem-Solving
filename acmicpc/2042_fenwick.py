@@ -11,11 +11,11 @@ node = [0]*(n+1)
 tree = [0]*(n+1)
 
 def update(i, dif):
-    print('before:',tree)
+    # print('before:',tree)
     while i <= n:
         tree[i]+=dif
         i+=(i&-i)
-    print('after:',tree)
+    # print('after:',tree)
 
 def sumt(i):
     ans = 0
