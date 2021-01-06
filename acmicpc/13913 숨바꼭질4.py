@@ -12,22 +12,43 @@ def lmii():return list(mii())
 ##########################################################
 maxnum = 100001
 n,k = mii()
-arr = [[-1,[n]] for _ in range(maxnum)]
 
+if n>k:
+    print(n-k)
+    for i in range(n,k-1,-1):
+        print(i,end=' ')
+    sys.exit()
+elif n==k:
+    print(0)
+    print(n)
+    sys.exit()
+arr = [-1]*maxnum
+tree = dict()
 def solve():    
     q=deque([n])
-    arr[n][0]=0#초기화    
+    arr[n]=0#초기화
+    # tree[n] = n
     while q:
-        x = q.popleft()
+        x = q.popleft()        
         if x==k:
             return
         for i in [x+1,x-1,x*2]:
             if 0<=i<maxnum:
-                if arr[i][0]==-1:#첫방문
-                    arr[i][0] = arr[x][0]+1
-                    arr[i][1]=arr[x][1]+[i]
+                if arr[i]==-1 :#첫방문
+                    tree[i]=x
+                    arr[i] = arr[x]+1
                     q.append(i)
 solve()
-print(arr[k][0])
-for a in arr[k][1]:
-    print(a,end=' ')
+print(arr[k])
+answer= deque()
+def search(num):
+    global answer
+    answer.append(num)
+    if num==n:return  
+    tt = tree[num]     
+    search(tt)
+    
+
+search(k)
+for z in range(len(answer)-1,-1,-1):
+    print(answer[z],end=' ')
