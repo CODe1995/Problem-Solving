@@ -12,21 +12,20 @@ def lmii():return list(mii())
 ##########################################################
 maxnum = 100001
 n,k = mii()
-arr = [0]*maxnum
+arr = [-1]*maxnum
 
 def solve():    
     q=deque([n])
-    
+    arr[n]=0
     while q:
-        x = q.popleft()
-
-        for i in [x+1,x-1,x*2]:
-            if 0<=i<maxnum and arr[i]==0:
-                if i==x*2:
+        x = q.popleft()        
+        if x==k:
+            return arr[x]
+        for i,j in [[x*2,2],[x+1,0],[x-1,1]]:
+            if 0<=i<maxnum and arr[i]==-1:
+                if j==2:
                     arr[i]=arr[x]
                 else:
                     arr[i]=arr[x]+1
-                if i==k:
-                    return arr[i]
                 q.append(i)
 print(solve())
