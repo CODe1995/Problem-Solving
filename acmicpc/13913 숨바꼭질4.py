@@ -10,6 +10,7 @@ def ii():return int(input())
 def mii():return map(int,ips())
 def lmii():return list(mii())
 ##########################################################
+sys.setrecursionlimit(10**5)
 maxnum = 100001
 n,k = mii()
 
