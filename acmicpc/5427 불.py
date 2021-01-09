@@ -36,6 +36,8 @@ for _ in range(t):
             lenq = len(q)
             for _ in range(lenq):
                 x,y = q.popleft()
+                if field[y][x]=='*':#불이 나를 덮친경우
+                    continue
                 if x==0 or x==width-1 or y==0 or y==height-1:
                     return visited[y][x]+1
                 for dx,dy in direction:
