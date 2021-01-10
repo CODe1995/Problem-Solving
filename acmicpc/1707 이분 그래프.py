@@ -10,49 +10,35 @@ def ii():return int(input())
 def mii():return map(int,ips())
 def lmii():return list(mii())
 ##########################################################
-k = ii()
-def setColor(c):
-    if c==1:
-        return 2
-    elif c==2:
-        return 1
-    
+k = ii()   
 for _ in range(k):
     v,e = mii()
     graph = [[] for _ in range(v+1)]
     color = [[] for _ in range(v+1)]#색깔을 저장 1,2
-    def bfs():
-        for i in range(1,v+1):
-            if graph[i]:#그래프가 존재하면                
-                if color[i]:#해당 그래프에 색이 있다면
-                    for child in graph[i]:
-                        if child==i:continue#자기자신은패스
-                        if not color[child]:#자식의 색이 없을때
-                            color[child]=setColor(color[i])
-                        else:#자식의 색이 있다면?
-                            if color[child]==color[i]:#서로 색이 같다?
-                                return 'NO'
-                            else:#다르다
-                                continue
-                else:#해당 그래프에 색이 없다면
-                    #이어지는 정점은 반대 색깔로 칠해준다.
-                    for child in graph[i]:
-                        if child==i:continue#자기자신은패스
-                        if color[child]:#이미 자식정점에 컬러가 있다면
-                            color[i]=setColor(color[child])#자식의 반대 색을 칠해준다.                            
-                            if color[child]==color[i]:#색이 겹친다면
-                                return 'NO'
-                            else:#색이 안겹치면
-                                continue
-                        else:#자식이 색깔이 없다면?(자식도,본인도 색이 없다.)
-                            color[i]=1
-                            color[child]=2
-                            # color[child] = setColor(color[i])#반대 색깔을 칠해준다.
-        return 'YES'
+
     for i in range(e):
         a,b = mii()
         graph[a].append(b)
         graph[b].append(a)
         #일단 모든 간선을 다 수집한다.
-    
-    print(bfs())
+    answer=1
+    exitFlag = False
+    for i in range(1,v+1):
+        if not answer:break
+        if color[i]:continue#이미 색이 부여됐으므로 건너뜀
+        color[i]=1#초기 컬러 설정
+        q = deque([i])
+
+        while q:
+            x = q.popleft()
+            c = 3-color[x]#반대되는 색을 넣어줌
+            #색이 없ㅅ다면 색을 넣어줌
+            for child in graph[x]:
+                if not color[child]:#색이 없다면
+                    color[child]=c#반대색 넣어줌
+                    q.append(child)
+                elif color[child]==color[x]:#색이 같다면
+                    answer = 0                        
+                    break
+    print("YES" if answer else "NO")
+            
