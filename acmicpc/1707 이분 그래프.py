@@ -11,10 +11,16 @@ def mii():return map(int,ips())
 def lmii():return list(mii())
 ##########################################################
 k = ii()
+def setColor(c):
+    if c==1:
+        return 2
+    elif c==2:
+        return 1
+    
 for _ in range(k):
     v,e = mii()
     graph = [[] for _ in range(v+1)]
-    color = [[] for _ in range(v+1)]#색깔을 저장
+    color = [[] for _ in range(v+1)]#색깔을 저장 1,2
     def bfs():
         for i in range(1,v+1):
             if graph[i]:#그래프가 존재하면                
@@ -22,7 +28,7 @@ for _ in range(k):
                     for child in graph[i]:
                         if child==i:continue#자기자신은패스
                         if not color[child]:#자식의 색이 없을때
-                            color[child]=not color[i]
+                            color[child]=setColor(color[i])
                         else:#자식의 색이 있다면?
                             if color[child]==color[i]:#서로 색이 같다?
                                 return 'NO'
@@ -30,16 +36,18 @@ for _ in range(k):
                                 continue
                 else:#해당 그래프에 색이 없다면
                     #이어지는 정점은 반대 색깔로 칠해준다.
-                    color[i]=0
                     for child in graph[i]:
                         if child==i:continue#자기자신은패스
                         if color[child]:#이미 자식정점에 컬러가 있다면
+                            color[i]=setColor(color[child])#자식의 반대 색을 칠해준다.                            
                             if color[child]==color[i]:#색이 겹친다면
                                 return 'NO'
                             else:#색이 안겹치면
                                 continue
-                        else:#자식이 색깔이 없다면?
-                            color[child] = not color[i]#반대 색깔을 칠해준다.
+                        else:#자식이 색깔이 없다면?(자식도,본인도 색이 없다.)
+                            color[i]=1
+                            color[child]=2
+                            # color[child] = setColor(color[i])#반대 색깔을 칠해준다.
         return 'YES'
     for i in range(e):
         a,b = mii()
