@@ -27,9 +27,10 @@ def drcControl(direc,turnd):#현재 방향과 바꾸는 방향
     for i,[a,b] in enumerate(s):
         if [a,b]==direc:
             if turnd=='L':
+                if i==0:i=4
                 return s[i-1]
             else:
-                if s==3:s=-1
+                if i==3:i=-1
                 return s[i+1]
 def solve():
     global k
