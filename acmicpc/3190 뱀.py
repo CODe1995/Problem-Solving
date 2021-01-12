@@ -35,13 +35,12 @@ def drcControl(direc,turnd):#현재 방향과 바꾸는 방향
 def solve():
     global k
     direction = [1,0]#오른쪽이 기본 방향
-    q = deque([[0,0]])
     field[0][0]=2
-    tailq = deque([[0,0]])
+    SNAKE = deque([[0,0]])#뱀 꼬리-몸통-머리 구조를 나타낸다.
     move = 0
-    while q:
-        x,y = q.popleft()#머리
-        tx,ty = tailq.popleft()#꼬리
+    size = 1
+    while SNAKE:
+        x,y = SNAKE[-1]#머리        
         if turn and turn[0][0]==move:#방향 전환 먼저
             direction = drcControl(direction,turn[0][1])
             turn.popleft()
@@ -53,19 +52,12 @@ def solve():
         
         if field[ny][nx]==1:#사과를 만난 경우
             field[ny][nx]=2#그 자리에 머리를 넣어줌
-            tailq.append([tx,ty])#꼬리는 그대로
-            k-=1#사과 갯수 하나 감소
+            SNAKE.append([nx,ny])#우측에 좌표를 추가해서 머리를 갱신해줌
+            size+=1
         else:#그냥 길인 경우
-            field[ny][nx]=2#그 자리에 머리를 넣어줌
-            field[ty][tx]=0#꼬리 있던 자리를 없애줌
-            for tdx,tdy in [[0,1],[1,0],[-1,0],[0,-1]]:#다음 몸통 자리를 찾음
-                ndx,ndy = tx+tdx,ty+tdy
-                if field[ndy][ndx]==2:#몸통을 찾았다면
-                    tailq.append([ndx,ndy])#그 몸통이 꼬리가 된다.
-                    break            
-        q.append([nx,ny])
+            field[ny][nx]=2#그 자리에 머리를 넣어줌    
+            tx,ty=SNAKE.popleft()#꼬리를 빼준다.
+            field[ty][tx]=0#꼬리 있던 자리를 없애줌    
+            SNAKE.append([nx,ny])#머리를 넣어준다.                
         move+=1#시간 증가    
 print(solve())
-        
-        
-        
