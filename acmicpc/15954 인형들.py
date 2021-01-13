@@ -20,16 +20,12 @@ def sdFunc(target):
     avg = sum(target)/len(target)#산술평균
     for z in target:
         dis+=(z-avg)**2
-    dis /= len(target)#분산
-    return math.sqrt(dis)#표준편차 반환
+    return dis/len(target)#분산 반환
 
-answer = 99
+answer = list()
 for i in range(n-k+1):#K개 이상의 = n-k
-    for j in range(n-k-i+2):#해당 범위로 리스트를 훑음
-        # print(i,j)
+    for j in range(n-k-i+1):#해당 범위로 리스트를 훑음
         tmp = arr[i:i+k+j]
         a = sdFunc(tmp)
-        if answer>a:
-            answer = a
-print(answer)
-        
+        answer.append(a)
+print(math.sqrt(min(answer)))
