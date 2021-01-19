@@ -1,8 +1,7 @@
 # 사용가능 언어
-- [ ] Java
+- [x] Java
 - [x] C/C++
 - [x] Python3  
-- [x] JavaScript  
 
 [S_url]:https://img.shields.io/static/v1?label&message=S&color=grey
 [G_url]:https://img.shields.io/static/v1?label&message=G&color=yellow
