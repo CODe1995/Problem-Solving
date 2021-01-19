@@ -1,7 +1,7 @@
 # 사용 언어
 - [x] Java
 - [x] C/C++
-- [x] Python3  (
+- [x] Python3(main)  
 
 [S_url]:https://img.shields.io/static/v1?label&message=S&color=grey
 [G_url]:https://img.shields.io/static/v1?label&message=G&color=yellow
