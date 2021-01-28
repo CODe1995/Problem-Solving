@@ -8,6 +8,9 @@ def solution():
     if N%2==0:return 'NOT POSSIBLE'
 
     ulen = N//2 #S의 크기        
+    # 모든 알파벳이 같은 경우
+    if U[0]*N == U:return U[:ulen]
+
     # 유일하지 않은 경우
     # 1. ABABA
     # 2. ABCABCA
