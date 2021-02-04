@@ -45,16 +45,15 @@ def init(start,end,index):
 if __name__ == "__main__":    
     #노드수, 수의변경, 구간합
     n,m,k = map(int,input().split())
-    tree = [0]*(n*4)
-    lazy = [0]*(n*4)
-    for _ in range(n):
-        nodes.append(int(input()))
+    height = math.ceil(math.log2(n))
+    size = 2**(height+1)
+    tree = [0]*size
+    lazy = [0]*size    
+    for _ in range(n):nodes.append(int(input()))
     init(0,n-1,1)
     for _ in range(m+k):
         msg = list(map(int,input().split()))
         if msg[0]==1:#b부터 c까지 d를 더하라
-            # for i in range(b,c+1):
-            #     nodes[i]+=d
             update(0,n-1,1,msg[1]-1,msg[2]-1,msg[3])
         else:#b부터 c까지의 합을 출력하라
-            print(query(0,n-1,1,msg[1]-1,msg[2]-1))
+            sys.stdout.write(str(query(0,n-1,1,msg[1]-1,msg[2]-1)))
