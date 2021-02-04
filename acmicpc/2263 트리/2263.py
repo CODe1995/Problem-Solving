@@ -1,22 +1,19 @@
 import sys
 input = sys.stdin.readline
-sys.setrecursionlimit(10**9)
+sys.setrecursionlimit(10**6)
 N = int(input())
 inorder = list(map(int,input().strip().split()))
 postorder = list(map(int,input().strip().split()))
+pos = {}
+for i in range(N):
+    pos[inorder[i]]=i
 #VLR - preorder
 def solution(inStart,inEnd,postStart,postEnd):
-    if len(inorder[inStart:inEnd])==0:return
+    if inStart>=inEnd or postStart>=postEnd:return
     root = postorder[postEnd-1]
     sys.stdout.write(str(root)+" ")#V
-    if len(inorder[inStart:inEnd])==1:return
-    mid=0
-    for i in range(inStart,inEnd):
-        if inorder[i]==root:
-            mid = i
-            break
-    leftsize = len(inorder[inStart:mid])
-    rightsize = len(inorder[mid+1:inEnd])
+    mid=pos[root]
+    leftsize = mid-inStart
     solution(inStart,mid,postStart,postStart+leftsize)#L
     solution(mid+1,inEnd,postStart+leftsize,postEnd-1)#R    
     return
