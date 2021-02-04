@@ -1,12 +1,24 @@
-import sys
+import sys,math
 input = sys.stdin.readline
 tree = list()
 nodes = list()
 
+def propagate(start,end,index):
+    if lazy[index]:
+        if start!=end:
+            lazy[index*2]+=lazy[index]
+            lazy[index*2+1]+=lazy[index]
+        tree[index]+=lazy[index]*(end-start+1)
+        lazy[index]=0
+    return
+
 def update(start,end,index,left,right,changeNum):
+    propagate(start,end,index)
     if left>end or right<start:return
     if start==end:
-        tree[index]+=changeNum
+        lazy[index]=changeNum
+        propagate(start,end,index)
+        # tree[index]+=changeNum
         return
     mid = (start+end)//2
     update(start,mid,index*2,left,right,changeNum)
@@ -14,6 +26,7 @@ def update(start,end,index,left,right,changeNum):
     tree[index]=tree[index*2]+tree[index*2+1]
     
 def query(start,end,index,left,right):
+    propagate(start,end,index)
     if left>end or right<start:
         return 0
     if left<=start and end<=right:
@@ -31,21 +44,17 @@ def init(start,end,index):
 
 if __name__ == "__main__":    
     #노드수, 수의변경, 구간합
-    n,m,k = map(int,input().rstrip().split())
+    n,m,k = map(int,input().split())
     tree = [0]*(n*4)
+    lazy = [0]*(n*4)
     for _ in range(n):
         nodes.append(int(input()))
     init(0,n-1,1)
     for _ in range(m+k):
-        msg = list(map(int,input().rstrip().split()))
-        if len(msg)==3:#
-            a,b,c = msg
-        else:
-            a,b,c,d = msg
-        
-        if a==1:#b부터 c까지 d를 더하라
-            for i in range(b,c+1):
-                nodes[i]+=d
-            update(0,n-1,1,b-1,c-1,d)
+        msg = list(map(int,input().split()))
+        if msg[0]==1:#b부터 c까지 d를 더하라
+            # for i in range(b,c+1):
+            #     nodes[i]+=d
+            update(0,n-1,1,msg[1]-1,msg[2]-1,msg[3])
         else:#b부터 c까지의 합을 출력하라
-            print(query(0,n-1,1,b-1,c-1))
+            print(query(0,n-1,1,msg[1]-1,msg[2]-1))
