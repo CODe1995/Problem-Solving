@@ -19,10 +19,8 @@ public class Main {
 				visited[ny][nx]=1;
 				return true;//끝도달
 			}
-			if(visited[ny][nx]==0&&field[ny][nx]=='.') {
-				boolean sum=dfs(nx,ny);
-				if(sum) return sum;
-			}
+			if(visited[ny][nx]==0&&field[ny][nx]=='.')
+				if(dfs(nx,ny))return true;
 		}
 		return false;
 	}
