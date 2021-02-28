@@ -17,7 +17,7 @@ public class Main {
 		}
 	}
 	static int getParent(int x) {
-		if(parent[x]==x)return x;
+		if(parent[x]==x||parent[x]==0)return x;
 		return parent[x] = getParent(parent[x]);
 	}
 	static void unionParent(int a,int b) {
@@ -31,7 +31,7 @@ public class Main {
 		N = stoi(st.nextToken());
 		M = stoi(st.nextToken());
 		parent=new int[N+1];
-		for(int i=1;i<=N;i++)parent[i]=i;
+//		for(int i=1;i<=N;i++)parent[i]=i;
 		for(int i=0;i<M;i++) {
 			st = new StringTokenizer(br.readLine());
 			pq.add(new Node(stoi(st.nextToken()),stoi(st.nextToken()),stoi(st.nextToken())));
