@@ -6,7 +6,7 @@ N,M = map(int,input().split())
 field = list()
 root = []
 enemy = dict()
-visited = [[list() for _ in range(M)] for _ in range(N)]
+visited = [[dict()]*M for _ in range(N)]
 for i in range(N):
     field.append(list(input().strip()))
     for j in range(M):
@@ -15,7 +15,7 @@ for i in range(N):
         elif field[i][j] == 'R':
             sz= len(enemy)
             enemy[sz]=[j,i]
-            visited[i][j].append(sz)
+            visited[i][j][sz]=1
             # enemy.append([j,i])
 order = list(map(int,list(input().strip())))
 # print(order)
@@ -54,13 +54,16 @@ def solution():
             
             ax,ay = n_move  #다음으로 이동할 좌표
             enemy[e]=[ax,ay]#다음좌표로 갱신
-            visited[ey][ex].remove(e)
-            visited[ay][ax].append(e)#키값을 넣어준다
-            if not visited[ey][ex]:
+            
+            visited[ey][ex]-=1            
+            visited[ay][ax]+=1
+            if visited[ey][ex]==0:#원래 자리에 아무도 없다면
                 field[ey][ex] = '.' #원래 있던곳 초기화            
+
             if field[ay][ax]=='R':#겹치는 애가 있다?
                 if [ax,ay] not in delete:
                     delete.append([ax,ay])#제거목록에 추가
+
             elif field[ay][ax]=='I':#종수랑 겹침
                 print('kraj',(m+1))#게임종료
                 return            
@@ -69,9 +72,8 @@ def solution():
         while delete:#겹치는곳 삭제
             delx,dely = delete.pop()
             if len(visited[dely][delx])==1:continue
-            for x in visited[dely][delx]:                               
-                del enemy[x]            
-            visited[dely][delx]=[]
+            for x in visited[dely][delx]:
+                del enemy[x]      
             field[dely][delx]='.'#펑~
         # print('==========')
     for c in field:
