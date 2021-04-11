@@ -10,6 +10,7 @@ for i in range(M):
     else: graph[a] = [b]
 answer = []
 visited = [0]*300001
+visited[X]=1
 def bfs():
     dq = deque([[X,0]])    
     while dq:
