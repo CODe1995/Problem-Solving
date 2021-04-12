@@ -19,67 +19,36 @@ public class Solution {
 		}
 		@Override
 		public int compareTo(AP o) {
-			return this.power-o.power;
+			return o.power-this.power;//파워 큰 순 정렬
 		}
 	}
 	static void move() {
-		AX=0;AY=0;
-		BX=9;BY=9;
+		AX=0;AY=0;BX=9;BY=9;
 		for(int t=0;t<=M;t++) {
-			int curMaxPower = 0; //이번 시간에서 얻을 수 있는 최대 파워
+			int maxP = 0; //이번 시간에서 얻을 수 있는 최대 파워
 			//가능한 AP 수집
-			ArrayList<Integer> Apossible = new ArrayList<>();
-			ArrayList<Integer> Bpossible = new ArrayList<>();
+			ArrayList<Integer> aPos = new ArrayList<>();
+			ArrayList<Integer> bPos = new ArrayList<>();
 			for(int i=0;i<A;i++) {//각 송신기별 거리 탐색
 				AP ap = aps.get(i);
 				int da = Math.abs(AX-ap.x) + Math.abs(AY-ap.y);
 				int db = Math.abs(BX-ap.x) + Math.abs(BY-ap.y);
-				if(ap.length>=da)Apossible.add(i);
-				if(ap.length>=db)Bpossible.add(i);
+				if(ap.length>=da)aPos.add(i);
+				if(ap.length>=db)bPos.add(i);
 			}
-			if(Apossible.isEmpty()&&Bpossible.isEmpty()) {
-//				System.out.println("t["+t+"]"+curMaxPower+" EMPTY");
-				if(t==M)continue;
-				AX += direction[moveA[t]][0];
-				AY += direction[moveA[t]][1];
-				BX += direction[moveB[t]][0];
-				BY += direction[moveB[t]][1];
-				continue;
-			}
-			if(!Apossible.isEmpty())
-				Collections.sort(Apossible,new Comparator<Integer>() {
-					@Override
-					public int compare(Integer o1, Integer o2) {
-						return aps.get(o2).power-aps.get(o1).power;
-					}				
-				});
-			if(!Bpossible.isEmpty())
-				Collections.sort(Bpossible,new Comparator<Integer>() {
-					@Override
-					public int compare(Integer o1, Integer o2) {
-						return aps.get(o2).power-aps.get(o1).power;
-					}				
-				});
-			if(!Apossible.isEmpty() && !Bpossible.isEmpty()) {//둘 다 가능한 AP가 있을 때
-				if(Apossible.get(0)==Bpossible.get(0)) {//만약 둘 다 최고 파워가 같은 AP라면					
-					if(Apossible.size()>=2)
-						curMaxPower = Math.max(aps.get(Apossible.get(1)).power+aps.get(Bpossible.get(0)).power,curMaxPower);
-					if(Bpossible.size()>=2)
-						curMaxPower = Math.max(aps.get(Apossible.get(0)).power+aps.get(Bpossible.get(1)).power,curMaxPower);
-					curMaxPower = Math.max(aps.get(Apossible.get(0)).power,curMaxPower);
+			if(!aPos.isEmpty()||!bPos.isEmpty()) {
+				if(!aPos.isEmpty() && !bPos.isEmpty()) {//둘 다 가능한 AP가 있을 때
+					if(aPos.get(0)==bPos.get(0)) {//만약 둘 다 최고 파워가 같은 AP라면					
+						if(aPos.size()>=2) maxP = Math.max(aps.get(aPos.get(1)).power+aps.get(bPos.get(0)).power,maxP);
+						if(bPos.size()>=2) maxP = Math.max(aps.get(aPos.get(0)).power+aps.get(bPos.get(1)).power,maxP);
+					}
+					else maxP = Math.max(aps.get(aPos.get(0)).power+aps.get(bPos.get(0)).power,maxP);
 				}
-				else
-					curMaxPower = Math.max(aps.get(Apossible.get(0)).power+aps.get(Bpossible.get(0)).power,curMaxPower);
+				if(!aPos.isEmpty()) maxP = Math.max(aps.get(aPos.get(0)).power,maxP);
+				if(!bPos.isEmpty()) maxP = Math.max(aps.get(bPos.get(0)).power,maxP);
+				answer+=maxP;			
 			}
-			if(!Apossible.isEmpty())
-				curMaxPower = Math.max(aps.get(Apossible.get(0)).power,curMaxPower);
-			if(!Bpossible.isEmpty())
-				curMaxPower = Math.max(aps.get(Bpossible.get(0)).power,curMaxPower);
-			answer+=curMaxPower;
-//			System.out.println("t["+t+"]"+curMaxPower);
-			
-			if(t==M)continue;
-			
+			if(t==M)continue;			
 			AX += direction[moveA[t]][0];
 			AY += direction[moveA[t]][1];
 			BX += direction[moveB[t]][0];
@@ -102,12 +71,9 @@ public class Solution {
 			aps = new ArrayList<>();
 			for(int i=0;i<A;i++) {
 				st = new StringTokenizer(br.readLine());
-				int x = stoi(st.nextToken())-1;
-				int y = stoi(st.nextToken())-1;
-				int c = stoi(st.nextToken());
-				int p = stoi(st.nextToken());
-				aps.add(new AP(x,y,c,p));
+				aps.add(new AP(stoi(st.nextToken())-1,stoi(st.nextToken())-1,stoi(st.nextToken()),stoi(st.nextToken())));
 			}	
+			Collections.sort(aps);
 			move();
 			sb.append("#").append(t).append(" ").append(answer).append("\n");
 		}
