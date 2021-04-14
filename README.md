@@ -12,6 +12,8 @@
 [mle_url]:https://img.shields.io/static/v1?label&message=MLE&color=yellow
 [resolving_url]:https://img.shields.io/static/v1?label&message=resolving&color=green
 
+[![Solved.ac프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=code1995)](https://solved.ac/code1995)  
+
 # 해결중인 문제
 최종확인일자 | 문제번호 | 티어 | 문제 | 상태 
 :---: | :---: | :---: | :--- | :---:
