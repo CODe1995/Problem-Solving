@@ -46,9 +46,7 @@ def G(N,V):
     # 예시) 25라면 21, 22, 23, 24, 25의 10의 자리수 2 + 2 + 2 + 2 + 2를 반환
 #########################################
 def F(N):
-    if N<10:
-        return dp[N]    #1부터 N까지의 합
-    elif N in dp:
+    if N in dp:
         return dp[N]
     V = getV(N)
     part1 = F(N-1 - N%V)
