@@ -16,6 +16,7 @@ direction = [[0,1],[1,0],[-1,0],[0,-1]]
 
 def melt():#빙산이 녹음
     #Step1. 주변 물을 파악, field에 반영할 melt 관리
+    section = 1
     size = len(icebergs)
     melted = deque()#녹은 빙산
     for i in range(size):
@@ -61,13 +62,14 @@ def checkSplit():#빙산의 분리를 체크한다.
 
     return False
 
-answer = 0
-if not checkSplit():#시작부터 분리된 경우
-    t = 1
+def solution():
+    t=0
+    answer = 0
     while True:
-        melt()
         if checkSplit():
             answer=t
             break
+        melt()
         t+=1
-print(answer)
+    return answer
+print(solution())
