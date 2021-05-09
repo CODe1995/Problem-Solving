@@ -1,14 +1,16 @@
 import math
 n = int(input())
 dp = [0]*10001
+divisor = [False]*10001
 dp[1] = 1
+divisor[1] = True
 dp[2] = 2
-dp[3] = 3
-dp[4] = 5
-def isSquare(num):
-    tmp = num**0.5    
-    # print(num,tmp)
-    return tmp*tmp==num
+def check(num):
+    for i in range(math.sqrt(num)):
+        if num%i==0:
+            if not divisor[num/i]:
+                divisor[n]
+
 for i in range(5,10000):
     res = 1
     if i%2==0:res+=1#짝수라면 +1
