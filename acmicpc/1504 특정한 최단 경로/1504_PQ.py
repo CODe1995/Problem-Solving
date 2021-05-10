@@ -23,13 +23,14 @@ def dijkstra(start):
         distance = THIS[0]
 
         if d[cur] < distance:continue
-        for i in range(len(edges[cur])):
-            _next = edges[cur][i][0]#다음 노드 번호
-            nextDistance = distance + edges[cur][i][1]
+        if cur in edges:
+            for i in range(len(edges[cur])):
+                _next = edges[cur][i][0]#다음 노드 번호
+                nextDistance = distance + edges[cur][i][1]
 
-            if nextDistance < d[_next]:
-                d[_next] = nextDistance
-                pq.put([nextDistance,_next])
+                if nextDistance < d[_next]:
+                    d[_next] = nextDistance
+                    pq.put([nextDistance,_next])
 
 dijkstra(1) # 1 to goal1
 case1 = d
@@ -43,4 +44,4 @@ dijkstra(mosts[1])  # goal2 to N
 case3 = d
 
 answer = min(case1[mosts[0]]+case2[mosts[1]]+case3[N],case1[mosts[1]]+case3[mosts[0]]+case2[N])
-print(answer)
+print(answer if answer<10e9 else -1)
