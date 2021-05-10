@@ -15,12 +15,12 @@ d = [10e9]*(N+1)
 def dijkstra(start):
     d[start] = 0
     pq = PriorityQueue()
-    pq.put([start,0])
+    pq.put([0,start])
 
     while pq.queue:
         THIS = pq.get()
-        cur = THIS[0]
-        distance = -THIS[1] #짧은 것이 먼저 오도록 음수화
+        cur = THIS[1]
+        distance = THIS[0]
 
         if d[cur] < distance:continue
         for i in range(len(edges[cur])):
@@ -29,7 +29,7 @@ def dijkstra(start):
 
             if nextDistance < d[_next]:
                 d[_next] = nextDistance
-                pq.put([_next,-nextDistance])
+                pq.put([nextDistance,_next])
 
 dijkstra(1) # 1 to goal1
 case1 = d
