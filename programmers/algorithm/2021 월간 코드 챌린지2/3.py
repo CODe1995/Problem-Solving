@@ -1,38 +1,24 @@
-# # print('123456'.find('7'))
+# solution https://blog.hoony.me/3
+
+def f(n):
+    stk = []
+    cnt = 0
+    for i in n:
+        stk.append(i)
+        if i == '0' and stk[-3:] == ['1', '1', '0']:
+            del stk[-3:]
+            cnt += 1
+    idx = -1
+    for i in range(len(stk)):
+        if stk[i] == '0':
+            idx = i
+    if idx < 0:
+        ret = "110"*cnt + ''.join(stk)
+    else:
+        ret = ''.join(stk[:idx+1]) + "110"*cnt + ''.join(stk[idx+1:])
+    return ret
 def solution(s):
-    answer = []
-    
-    for cur in s:
-        stack = list()
-        cnt = 0 #뽑아낸 110의 갯수        
-        for i in range(len(cur)):
-            stack.append(cur[i])
-            if len(stack)>=3:
-                temp = stack[-3:]                
-                if temp == ['1','1','0']:
-                    cnt+=1
-                    stack.pop()
-                    stack.pop()
-                    stack.pop()
-        
-        for i in range(len(stack)):
-            if len(stack)>=3 and stack[i:i+3]==['1','1','1']:#최초 111
-                for j in range(cnt):    #110을 뽑은 갯수만큼 삽입
-                    stack.insert(i,'0')
-                    stack.insert(i,'1')
-                    stack.insert(i,'1')
-                break
-        else:   #111이 존재하지 않는다면?
-            for j in range(cnt):    #110을 뽑은 갯수만큼 삽입
-                stack.insert(i,'0')
-                stack.insert(i,'1')
-                stack.insert(i,'1')
-                # stack.append('1')
-                # stack.append('1')
-                # stack.append('0')        
-        # print(stack,cnt)
-        answer.append(''.join(stack))
-    return answer
+    return [f(x) for x in s]
 
 print(solution(['1110110110110','1110','100111100','0111111010','1111','11100']))
 # print(solution(['0111111010']))
