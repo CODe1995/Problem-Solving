@@ -1,26 +1,38 @@
+import sys,os
+
 N = int(input())
 arr = list()
-for _ in range(N):
-    arr.append(list(map(int,input().split())))
+maxindex = 0
+highest = 0 #최고 높이
+mid = 0
+for i in range(N):
+    a = list(map(int,input().split()))    
+    arr.append(a)
+    #가장 높은 막대의 index가 mid
+    if highest<a[1]:
+        highest=a[1]
+        mid=a[0]
+    maxindex = max(maxindex,a[0])
 arr.sort()
-pos = 1
-# print(pos,arr)
-while pos<len(arr)-1:
-    if arr[pos][1]<arr[pos-1][1] and arr[pos][1]<=arr[pos+1][1]:
-        arr.pop(pos)
-        # print(pos,arr)    
-    else:pos+=1
-answer =0
-for i in range(len(arr)):
-    if i!=len(arr)-1:
-        if arr[i][1]<=arr[i+1][1]:
-            answer+=(arr[i+1][0]-arr[i][0])*arr[i][1]
-        else:
-            answer+=arr[i][1]
-    else:
-        if arr[i][1] < arr[i-1][1]:
-            answer+=(arr[i][0]-arr[i-1][0])*arr[i][1]
-        else:
-            answer+=arr[i][1]            
 
-print(answer)
+warehouse = [0]*(maxindex+1)
+for i in range(len(arr)):
+    warehouse[arr[i][0]] = arr[i][1]
+
+s,e = arr[0][0],mid
+weight = 0
+prev = -1
+while s<e and s<=maxindex:    
+    if warehouse[s]>prev or prev==-1:#높이 갱신
+        prev = warehouse[s]
+    weight += prev
+    s+=1
+
+s,e = arr[-1][0],mid
+prev = -1
+while s>e and s>=arr[0][0]:
+    if warehouse[s]>prev or prev==-1:
+        prev = warehouse[s]
+    weight += prev
+    s-=1
+print(weight+highest)
