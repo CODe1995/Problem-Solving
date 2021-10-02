@@ -54,6 +54,7 @@ while turn<1000:
         nx,ny = cx+direction[cd][0], cy+direction[cd][1]  #다음 이동 좌표
         rangeOut = checkRangeOut(nx,ny)   #장외 = blue
         reverse = False
+        doubleBlue = False
         if rangeOut or field[ny][nx]==2:# 파란색 처리
             cd = opposite(cd)   #반대 방향
             horse[curIndex][2]=cd
@@ -61,7 +62,8 @@ while turn<1000:
             rangeOut = checkRangeOut(nx,ny)
             if rangeOut or field[ny][nx]==2:
                 nx,ny = cx,cy
-        if field[ny][nx]==1: #빨강            
+                doubleBlue = True
+        if field[ny][nx]==1 and not doubleBlue: #빨강            
             reverse=True
         
         #자식 말의 좌표 변경
