@@ -2,6 +2,7 @@ arr = list(map(int, input().split()))
 
 # 출발,도착 포함 33개 / 자식 index, 자신 점수
 field = [[0, 0]] * 33
+horses = [0, 0, 0, 0]
 
 
 def init_field():
@@ -31,35 +32,36 @@ def move(current_position, move_count, first_move):
     return move(field[current_position][0][0], move_count - 1, False)
 
 
-def check_overlay(index, horses):
+def check_overlay(index):
+    global horses
     for i in range(4):
         if index == horses[i] and index != 21:
             return False
     return True
 
 
-def dfs(depth, horses, score):
-    global arr
+def dfs(depth, score):
+    global arr, horses
     if depth == 10:
         return score
     dice = arr[depth]
-    max_score = 0
+    max_score = score
     for i in range(4):
         # 이미 끝에 도달한 말
         if horses[i] == 21:
             continue
         next_index = move(horses[i], dice, True)
-        if not check_overlay(next_index, horses):
+        if not check_overlay(next_index):
             continue
         cur_index = horses[i]
         horses[i] = next_index
-        max_score = max(max_score, dfs(depth + 1, horses, score + get_score(next_index)))
+        max_score = max(max_score, dfs(depth + 1, score + get_score(next_index)))
         horses[i] = cur_index
-    return max_score if max_score!=0 else score
+    return max_score
 
 
 def game():
-    answer = dfs(0, [0, 0, 0, 0], 0)
+    answer = dfs(0, 0)
     print(answer)
 
 
