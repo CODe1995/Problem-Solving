@@ -1,35 +1,31 @@
 arr = list(map(int, input().split()))
 
 # 출발,도착 포함 33개 / 자식 index, 자신 점수
-field = [[0, 0]] * 33
+field = {}
 horses = [0, 0, 0, 0]
+scores = []
 
 
 def init_field():
-    global field
-    for i in range(0, 21):
-        field[i] = [[i + 1, i * 2]]
-    field[5].append([22, 13])
-    field[22], field[23], field[24] = [[23, 13]], [[24, 16]], [[25, 19]]
-    field[10].append([26, 20])
-    field[26], field[27] = [[27, 22]], [[25, 24]]
-    field[15].append([28, 30])
-    field[28], field[29], field[30] = [[29, 28]], [[30, 27]], [[25, 26]]
-    field[25], field[31], field[32] = [[31, 25]], [[32, 30]], [[20, 35]]
-    field[21] = [[-1, 0]]
-
-
-def get_score(current_position):
-    global field
-    return field[current_position][0][1]
-
-
-def move(current_position, move_count, first_move):
-    if move_count == 0 or current_position == 21:
-        return current_position
-    if first_move and len(field[current_position]) == 2:  # 지름길 있는 경우
-        return move(field[current_position][1][0], move_count - 1, False)
-    return move(field[current_position][0][0], move_count - 1, False)
+    global field, scores
+    scores = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 0, 13, 16, 19, 25, 22, 24,
+              28, 27, 26, 30, 35]
+    field = {}
+    for i in range(21):
+        lst = []
+        for j in range(5):
+            if i + j + 1 >= 21:
+                lst.append(21)
+                break
+            else:
+                lst.append(i + j + 1)
+        field[i] = lst
+    root1 = [5, 22, 23, 24, 25, 31, 32, 20, 21]
+    root2 = [10, 26, 27, 25, 31, 32, 20, 21]
+    root3 = [15, 28, 29, 30, 25, 31, 32, 20, 21]
+    for i in range(len(root1)): field[root1[i]] = root1[i + 1:i + 6]
+    for i in range(len(root2)): field[root2[i]] = root2[i + 1:i + 6]
+    for i in range(len(root3)): field[root3[i]] = root3[i + 1:i + 6]
 
 
 def dfs(depth, score):
@@ -42,12 +38,16 @@ def dfs(depth, score):
         # 이미 끝에 도달한 말
         if horses[i] == 21:
             continue
-        next_index = move(horses[i], dice, True)
+        next_index = 0
+        if len(field[horses[i]]) < dice:  # 끝에 도달한다는말
+            next_index = 21
+        else:
+            next_index = field[horses[i]][dice-1]
         if next_index in horses and next_index != 21:
             continue
         cur_index = horses[i]
         horses[i] = next_index
-        max_score = max(max_score, dfs(depth + 1, score + get_score(next_index)))
+        max_score = max(max_score, dfs(depth + 1, score + scores[next_index]))
         horses[i] = cur_index
     return max_score
 
