@@ -32,14 +32,6 @@ def move(current_position, move_count, first_move):
     return move(field[current_position][0][0], move_count - 1, False)
 
 
-def check_overlay(index):
-    global horses
-    for i in range(4):
-        if index == horses[i] and index != 21:
-            return False
-    return True
-
-
 def dfs(depth, score):
     global arr, horses
     if depth == 10:
@@ -51,7 +43,7 @@ def dfs(depth, score):
         if horses[i] == 21:
             continue
         next_index = move(horses[i], dice, True)
-        if not check_overlay(next_index):
+        if next_index in horses and next_index != 21:
             continue
         cur_index = horses[i]
         horses[i] = next_index
