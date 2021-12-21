@@ -23,34 +23,23 @@ def isCanGo(x1, y1, x2, y2):  # A지점에서 B지점까지 벽이 있는지 검
     #우측인 경우
     result = False
     if y1 == y2 and x1 < x2:
-        if walls[y1][x1][1]:
-            result = False
-        else:
-            result = True
+        result = False if walls[y1][x1][1] else True
     #좌측인 경우
     elif y1 == y2 and x1 > x2:
-        if walls[y2][x2][1]:
-            result = False
-        else:
-            result = True
+        result = False if walls[y2][x2][1] else True
     #아래쪽인 경우
     elif x1 == x2 and y1 < y2:
-        if walls[y2][x2][0]:
-            result = False
-        else:
-            result = True
+        result = False if walls[y2][x2][0] else True
     #위쪽인 경우
     elif x1 == x2 and y1 > y2:
-        if walls[y1][x1][0]:
-            result = False
-        else:
-            result = True
+        result = False if walls[y1][x1][0] else True
     return result
 
 def isOutField(x,y):
     if not (0<=x<M and 0<=y<N):
         return True
     return False
+
 
 def workAircon():  # 에어컨 작동
     newTempField = [[0]*M for _ in range(N)]
@@ -74,31 +63,20 @@ def workAircon():  # 에어컨 작동
                 visited[ny2][nx2] = 1
                 dq.append([nx2,ny2,temp-1])
             
+            nextq = deque()
             if airconDir in [1,2]:   #우좌                
-                #첫번째 자식
-                if not isOutField(cx,cy-1) and isCanGo(cx,cy,cx,cy-1) and not isOutField(cx+dx,cy-1) and isCanGo(cx,cy-1,cx+dx,cy-1) and not visited[cy-1][cx+dx]:
-                    newTempField[cy-1][cx+dx]+=temp-1
-                    visited[cy-1][cx+dx] = 1
-                    dq.append([cx+dx,cy-1,temp-1])
-
-                #두번째 자식
-                if not isOutField(cx,cy+1) and isCanGo(cx,cy,cx,cy+1) and not isOutField(cx+dx,cy+1) and isCanGo(cx,cy+1,cx+dx,cy+1) and not visited[cy+1][cx+dx]:
-                    newTempField[cy+1][cx+dx]+=temp-1
-                    visited[cy+1][cx+dx] = 1
-                    dq.append([cx+dx,cy+1,temp-1])
+                nextq.append([cx, cy-1, cx+dx, cy-1])
+                nextq.append([cx, cy+1, cx+dx, cy+1])
             elif airconDir in [3,4]:   #상하        
-                #첫번째 자식
-                if not isOutField(cx-1,cy) and isCanGo(cx,cy,cx-1,cy) and not isOutField(cx-1,cy+dy) and isCanGo(cx-1,cy,cx-1,cy+dy) and not visited[cy+dy][cx-1]:
-                    newTempField[cy+dy][cx-1]+=temp-1
-                    visited[cy+dy][cx-1] = 1
-                    dq.append([cx-1,cy+dy,temp-1])
+                nextq.append([cx-1, cy, cx-1, cy+dy])
+                nextq.append([cx+1, cy, cx+1, cy+dy])
 
-                #두번째 자식
-                if not isOutField(cx+1,cy) and isCanGo(cx,cy,cx+1,cy) and not isOutField(cx+1,cy+dy) and isCanGo(cx+1,cy,cx+1,cy+dy) and not visited[cy+dy][cx+1]:
-                    newTempField[cy+dy][cx+1]+=temp-1
-                    visited[cy+dy][cx+1] = 1
-                    dq.append([cx+1,cy+dy,temp-1])
-
+            while nextq:
+                nx1,ny1,nx2,ny2 = nextq.popleft()
+                if not isOutField(nx1,ny1) and isCanGo(cx,cy,nx1,ny1) and not isOutField(nx2,ny2) and isCanGo(nx1,ny1,nx2,ny2) and not visited[ny2][nx2]:
+                    newTempField[ny2][nx2]+=temp-1
+                    visited[ny2][nx2] = 1
+                    dq.append([nx2,ny2,temp-1])
     #온도 적용
     for i in range(N):
         for j in range(M):
