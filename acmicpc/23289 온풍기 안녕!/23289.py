@@ -168,7 +168,8 @@ def doSomthing():
 
         #4 초콜릿?? Done.
         answer += 1
-
+        if answer>100:
+            break
         #5 모든칸 K 이상인지 검사 반복 Done.
         if isTempGoal():
             break
