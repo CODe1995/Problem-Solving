@@ -40,8 +40,7 @@ def isOutField(x,y):
         return True
     return False
 
-
-def workAircon():  # 에어컨 작동
+def initAircon():   #에어컨 패턴 기억
     newTempField = [[0]*M for _ in range(N)]
     for air_x, air_y in airconPos:
         visited = [[0]*M for _ in range(N)] #자식들 안겹치게
@@ -77,10 +76,13 @@ def workAircon():  # 에어컨 작동
                     newTempField[ny2][nx2]+=temp-1
                     visited[ny2][nx2] = 1
                     dq.append([nx2,ny2,temp-1])
+    return newTempField
+
+def workAircon(temp):  # 에어컨 작동    
     #온도 적용
     for i in range(N):
         for j in range(M):
-            fieldtemp[i][j] += newTempField[i][j]
+            fieldtemp[i][j] += temp[i][j]
 
 
 def manageTemp():  # 온도 관리
@@ -134,9 +136,10 @@ def isTempGoal():
 
 def doSomthing():
     answer = 0
+    rememberTemp = initAircon()
     while True:
         #1 바람나옴
-        workAircon()
+        workAircon(rememberTemp)
 
         #2 온도 조절 Done.
         manageTemp()
