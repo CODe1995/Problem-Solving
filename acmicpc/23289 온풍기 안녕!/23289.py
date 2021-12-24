@@ -36,9 +36,7 @@ def isCanGo(x1, y1, x2, y2):  # A지점에서 B지점까지 벽이 있는지 검
     return result
 
 def isOutField(x,y):
-    if not (0<=x<M and 0<=y<N):
-        return True
-    return False
+    return True if 0<=x<M and 0<=y<N else False
 
 def initAircon():   #에어컨 패턴 기억
     newTempField = [[0]*M for _ in range(N)]
@@ -117,13 +115,7 @@ def sideTempDown():
         for j in range(M):
             if fieldtemp[i][j] == 0:
                 continue
-            if i == 0 and 0 <= j < M:
-                fieldtemp[i][j] -= 1
-            elif i == N-1 and 0 <= j < M:
-                fieldtemp[i][j] -= 1
-            elif j == 0 and 0 <= i < N:
-                fieldtemp[i][j] -= 1
-            elif j == M-1 and 0 <= i < N:
+            if i in [N-1,0] or j in [M-1,0]:
                 fieldtemp[i][j] -= 1
 
 
