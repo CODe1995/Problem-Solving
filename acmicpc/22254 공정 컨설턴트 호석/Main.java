@@ -22,9 +22,12 @@ public class Main {
 
 	static boolean play(int lineCnt) {
 		PriorityQueue<Integer> pq = new PriorityQueue<>();
-		for (int i = 0; i < lineCnt; i++)
-			pq.add(0);
-		for (int i = 0; i < N; i++) {
+		int startPoint = 0;
+		for (int i = 0; i < lineCnt; i++) {
+			pq.add(present[i]);
+			startPoint = i;
+		}
+		for (int i = startPoint+1; i < N; i++) {
 			int curTime = present[i];
 			int nextSumTime = pq.poll() + curTime;
 			if (nextSumTime > X) {
@@ -38,18 +41,18 @@ public class Main {
 	static int bisect() {
 		// pq를 라인 수만큼 생성
 		// pq 중 하나라도 X 값을 넘어가면 라인 늘림
-		int left = 0;
+		int left = 1;
 		int right = N;
-		int mid = (left + right) / 2;		
-		while (left < right) {
-			if(play(mid)) {
-				right-=1;
-			}else {
-				left+=1;
-			}
+		int mid = -1;		
+		while (left <= right) {
 			mid = (left + right) / 2;
+			if(play(mid)) {
+				right=mid-1;
+			}else {
+				left=mid+1;
+			}
 		}
-		return mid;
+		return right+1;
 	}
 
 	public static void main(String[] args) throws IOException {
