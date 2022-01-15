@@ -1,35 +1,38 @@
-# 사용 언어
-- [x] Java(main)  
-- [x] C/C++
-- [x] Python3(main)  
+# Problem Solving
+이 곳은 **알고리즘 역량 강화**를 위한 개인 학습 레포지토리입니다.  
 
-[S_url]:https://img.shields.io/static/v1?label&message=S&color=grey
-[G_url]:https://img.shields.io/static/v1?label&message=G&color=yellow
-[P_url]:https://img.shields.io/static/v1?label&message=P&color=lightgreen
-[D_url]:https://img.shields.io/static/v1?label&message=D&color=blue
-[wrong_url]:https://img.shields.io/static/v1?label&message=wrong&color=red
-[timeout_url]:https://img.shields.io/static/v1?label&message=TimeOut&color=yellow
-[mle_url]:https://img.shields.io/static/v1?label&message=MLE&color=yellow
-[resolving_url]:https://img.shields.io/static/v1?label&message=resolving&color=green
+## 업데이트 노트
+```
+2022-01-15 커밋 컨벤션 정의
+```
+---
+## 커밋 컨벤션
+### Online Judge 구분
+- 백준: boj
+- 프로그래머스: prm
+- 해커랭크: hrk
+- 코딜리티: cod
+- SWEA: swea
+- 정보올림피아드: jol
+### 커밋 타입
+- 문제 해결 시도(`RS`)
+- 문제 해결(`AC`)
+- 오답(`WA`)
+- 코드 단축(`CS`)
+- 시간 단축(`TS`)
+- 시간 초과(`TLE`)
+- 메모리 초과(`MLE`)
+- 런타임 에러(`RTE`)
 
-[![Solved.ac프로필](http://mazassumnida.wtf/api/v2/generate_badge?boj=code1995)](https://solved.ac/code1995)  
+### 커밋 예시
+[`OJ명`] `번호와 문제명` `언어` `타입`
+```
+[boj] 15684 사다리 조작 python3 AC
+``` 
 
-# 해결중인 문제
-최종확인일자 | 문제번호 | 티어 | 문제 | 상태 
-:---: | :---: | :---: | :--- | :---:
-20.12.16 | [1991](https://www.acmicpc.net/problem/1991) | | 트리순회 자료구조 [트리] | ![resolving][resolving_url]
-20.12.16 | [6064](https://www.acmicpc.net/problem/6064) | ![S][S_url] | 카잉달력 |  ![wrong][wrong_url]
-? | [1913](https://www.acmicpc.net/problem/1913) | | 달팽이 | ![resolving][resolving_url]
-? | [5463](https://www.acmicpc.net/problem/5463) | | 건포도 - 아마 DFS | ![resolving][resolving_url] 
-20.12.16 | [1509](https://www.acmicpc.net/problem/1509) | ![G][G_url] | 팰린드롬 | ![resolving][resolving_url]
-? | [13545](https://www.acmicpc.net/problem/13545) | | 모스알고리즘 | ![resolving][resolving_url]
-? | [11401](https://www.acmicpc.net/problem/11401)  | | | ![wrong][wrong_url]
-? | [11066](https://www.acmicpc.net/problem/11066) | ![G][G_url] | dp | ![resolving][resolving_url]
-20.11.22 | [9202](https://www.acmicpc.net/problem/9202) |  | | ![resolving][resolving_url]
-20.11.16 | [10844](https://www.acmicpc.net/problem/10844) | ![S][S_url] | dp | ![wrong][wrong_url]
-20.11.30 | [16977](https://www.acmicpc.net/problem/16977) | ![D][D_url] | SegTree&PBS | ![timeout][timeout_url]
-20.11.30 | [1396](https://www.acmicpc.net/problem/1306) |![P][P_url] | PBS | ![timeout][timeout_url]
-20.12.15 | [10999](https://www.acmicpc.net/problem/10999) | ![P][P_url] | Seg+Lazy | ![timeout][timeout_url]
-20.12.18 | [1905](https://www.acmicpc.net/problem/1905) | ![G][G_url] | Seg | ![resolving][resolving_url]
-20.12.20 | [1944](https://www.acmicpc.net/problem/1944) | ![G][G_url] | MST | ![MLE][mle_url]  
-20.12.20 | [14501](https://www.acmicpc.net/problem/14501) | ![S][S_url] | DP | ![resolving][resolving_url]
+```
+[boj] 15684 사다리 조작 python3 TS
+
+1200ms -> 600ms
+BFS에서 중복 처리를 하였음
+```
