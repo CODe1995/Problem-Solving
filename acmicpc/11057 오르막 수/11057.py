@@ -1,12 +1,13 @@
 N = int(input())
-dp = [0]*1001
-dp[1] = 10
-dp[2] = 55
+mod = 10007
 
-for i in range(3,N+1):
-    temp = dp[i-1]-dp[i-2]
-    dp[i]+=dp[i-1]+temp
-    for j in range(9,-1,-1):
-        temp-=j
-        dp[i] += temp
-print(dp[N]%10007)
+dp = [[0] * 10] + [[1] * 10] + [[0] * 10 for _ in range(N)]
+for i in range(2, N+1):
+    for j in range(10):
+        if j == 0:
+            dp[i][j] = 1
+        else:
+            dp[i][j] = dp[i][j-1] + dp[i-1][j]
+        dp[i][j] %= mod
+    
+print(sum(dp[N]) % mod)
